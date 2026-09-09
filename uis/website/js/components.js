@@ -52,12 +52,27 @@ function initializeMobileMenu() {
     });
 }
 
-function highlightCurrentPage() {
-    const currentPage =
-        window.location.pathname.split("/").pop() || "index.html";
+function normalizePagePath(path) {
+    const page = path.split("/").pop() || "index";
 
-    document.querySelectorAll("[data-nav-link]").forEach((link) => {
-        const linkPage = link.getAttribute("href");
+    return page.replace(".html", "");
+}
+
+function highlightCurrentPage() {
+    const currentPage = normalizePagePath(window.location.pathname);
+    const navigationLinks = document.querySelectorAll("[data-nav-link]");
+
+    navigationLinks.forEach((link) => {
+        const linkPage = normalizePagePath(link.getAttribute("href"));
+
+        link.classList.remove(
+            "text-navy",
+            "border-b-2",
+            "border-navy",
+            "bg-cloud",
+        );
+
+        link.removeAttribute("aria-current");
 
         if (linkPage !== currentPage) {
             return;
