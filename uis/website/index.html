@@ -11,31 +11,14 @@
     content="HealthCore provides same-day outpatient appointments, extended hours, and bilingual care across 12 clinics in the US and UK." />
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./js/tailwind-config.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: "#12345b",
-            teal: "#168aa5",
-            mint: "#99dfc2",
-            cloud: "#f4f7fd",
-          },
-          fontFamily: {
-            sans: ["Manrope", "sans-serif"],
-          },
-        },
-      },
-    };
-  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
-
+  <!---JSON-LD is structured information for search engines-->
   <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -50,70 +33,7 @@
 
 <body class="bg-white font-sans text-slate-700">
   <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
-    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-5 lg:px-8">
-      <a href="index.html" class="flex shrink-0 items-center gap-2" aria-label="HealthCore home">
-        <!-- Medical icon -->
-        <span class="grid size-8 shrink-0 place-items-center rounded-md bg-navy text-white sm:size-9">
-          <i data-lucide="plus" class="size-5 stroke-[3]" aria-hidden="true"></i>
-        </span>
-
-        <!-- Company name and subtitle -->
-        <span class="flex flex-col leading-none">
-          <span class="whitespace-nowrap text-sm font-extrabold sm:text-base">
-            <span class="text-navy">Health</span><span class="text-teal">Core</span>
-          </span>
-
-          <span
-            class="mt-1 whitespace-nowrap text-[6px] font-bold uppercase tracking-wide text-slate-500 sm:text-[7px]">
-            Outpatient Healthcare
-          </span>
-        </span>
-      </a>
-
-      <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary navigation">
-        <a href="index.html" class="border-b-2 border-navy py-2 font-semibold text-navy">
-          Home
-        </a>
-        <a href="services.html" class="py-2 font-semibold hover:text-navy">Services</a>
-        <a href="locations.html" class="py-2 font-semibold hover:text-navy">Locations</a>
-        <a href="contact.html" class="py-2 font-semibold hover:text-navy">Contact</a>
-      </nav>
-
-      <div class="flex items-center gap-2 sm:gap-3">
-        <div class="flex rounded-md bg-slate-100 p-1">
-          <button type="button" class="rounded bg-navy px-3 py-2 text-xs font-bold text-white" aria-pressed="true">
-            EN
-          </button>
-          <button type="button" class="px-3 py-2 text-xs font-bold text-slate-600" aria-pressed="false">
-            ES
-          </button>
-        </div>
-
-        <a href="application.html" class="grid size-10 place-items-center rounded-full bg-navy text-white"
-          aria-label="Open patient application">
-          <i data-lucide="user-round" class="size-5" aria-hidden="true"></i>
-        </a>
-
-        <button type="button" id="menu-button"
-          class="grid size-10 place-items-center rounded-md text-navy hover:bg-slate-100 lg:hidden"
-          aria-label="Open navigation menu" aria-controls="mobile-menu" aria-expanded="false">
-          <i data-lucide="menu" class="size-6" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-
-    <nav id="mobile-menu" class="hidden border-t border-slate-200 bg-white px-4 pb-4 pt-3 lg:hidden"
-      aria-label="Mobile and tablet navigation">
-      <div class="mx-auto flex max-w-7xl flex-col gap-1">
-        <a href="index.html" class="rounded-md bg-cloud px-3 py-3 font-semibold text-navy" aria-current="page">Home</a>
-        <a href="services.html" class="rounded-md px-3 py-3 font-medium hover:bg-cloud hover:text-navy">Services</a>
-        <a href="locations.html" class="rounded-md px-3 py-3 font-medium hover:bg-cloud hover:text-navy">Locations</a>
-        <a href="contact.html" class="rounded-md px-3 py-3 font-medium hover:bg-cloud hover:text-navy">Contact</a>
-      </div>
-    </nav>
-  </header>
-
+  <div id="header" class="sticky top-0 z-50"></div>
   <main>
     <!-- Hero -->
     <section class="bg-gradient-to-br from-cloud via-white to-cyan-50">
@@ -151,8 +71,7 @@
         </div>
 
         <div class="relative overflow-hidden rounded-lg shadow-xl">
-          <img src="public/images/home-hero.jpg"
-            alt="HealthCore doctor speaking with an older patient in a clinic"
+          <img src="public/images/home-hero.jpg" alt="HealthCore doctor speaking with an older patient in a clinic"
             class="aspect-[4/3] w-full object-cover" />
 
           <!-- Accreditation panel -->
@@ -246,65 +165,9 @@
   </main>
 
   <!-- Footer -->
-  <!-- Footer -->
-  <footer class="bg-[#eef4ff]">
-    <div
-      class="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-12 md:flex-row md:items-center md:justify-between md:px-8">
-      <!-- Company information -->
-      <div>
-        <p class="text-base font-extrabold text-navy">
-          HealthCore
-        </p>
+  <div id="footer"></div>
 
-        <p class="mt-2 text-xs text-slate-600">
-          © 2025 HealthCore. All rights reserved.
-        </p>
-      </div>
-
-      <!-- Contact and social links -->
-      <nav class="flex flex-wrap items-center gap-y-3 text-xs text-slate-600" aria-label="Contact and social media">
-        <a href="mailto:info@healthcore.com" class="pr-3 font-semibold text-teal hover:text-navy sm:pr-4">
-          info@healthcore.com
-        </a>
-
-        <a href="#" class="border-l border-slate-300 px-3 hover:text-teal sm:px-4"
-          aria-label="Visit HealthCore on LinkedIn">
-          LinkedIn
-        </a>
-
-        <a href="#" class="border-l border-slate-300 px-3 hover:text-teal sm:px-4"
-          aria-label="Visit HealthCore on Facebook">
-          Facebook
-        </a>
-
-        <a href="#" class="border-l border-slate-300 pl-3 hover:text-teal sm:pl-4"
-          aria-label="Visit HealthCore on Instagram">
-          Instagram
-        </a>
-      </nav>
-    </div>
-  </footer>
-
-  <script>
-    lucide.createIcons();
-
-    const menuButton = document.getElementById("menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    menuButton.addEventListener("click", () => {
-      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-      menuButton.setAttribute("aria-expanded", String(!isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
-      mobileMenu.classList.toggle("hidden", isOpen);
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
-        menuButton.click();
-        menuButton.focus();
-      }
-    });
-  </script>
+  <script src="./js/components.js"></script>
 </body>
 
 </html>
