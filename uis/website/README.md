@@ -79,7 +79,7 @@ website/
 - `js/main.js` is reserved for future page-specific behavior.
 - `js/locations.js` filters clinic cards by region and announces the visible result count.
 - `application.html` and `js/validation.js` are reserved for the future appointment enquiry form.
-- `css/locations.css` aligns the shared header and footer with the Locations references without changing other pages.
+- Locations page styling uses Tailwind utility classes directly in `locations.html`; the shared header and footer are used without page-specific overrides.
 - Contact page styling uses Tailwind utility classes directly in `contact.html`; the shared header and footer are used without page-specific overrides.
 - `public/screenshots/` contains the responsive UI/UX references for each implemented page.
 
@@ -213,7 +213,7 @@ The screenshots in [`public/screenshots/locations`](./public/screenshots/locatio
 - Clinic cards stack in one column, with full-width phone and appointment actions on separate rows.
 - The interpreter support panel stacks its description and support number vertically.
 
-All Regions restores all six cards; Texas, Florida, and Georgia display three, two, and one respectively. Filters expose their selected state and announce results for screen readers. The support number `(800) HEALTH-CORE` remains display text pending a valid dialable number; appointment links lead to the existing application placeholder with the selected clinic in the URL. The page reuses the shared header and footer with Locations-specific styling for the reference layout.
+All Regions restores all six cards; Texas, Florida, and Georgia display three, two, and one respectively. Filters expose their selected state and announce results for screen readers. The support number `(800) HEALTH-CORE` remains display text pending a valid dialable number; appointment links lead to the existing application placeholder with the selected clinic in the URL. The page uses Tailwind utility classes and reuses the shared header and footer without page-specific overrides.
 
 ### Contact
 
