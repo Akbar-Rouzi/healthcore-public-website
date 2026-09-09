@@ -7,20 +7,22 @@ This folder contains HealthCore's public-facing website for patients and visitor
 The current milestone includes:
 
 - A responsive home page for desktop, tablet, and mobile
-- A shared-style header with the HealthCore logo, navigation, language selector, and account link
+- A shared header and footer loaded into each page with vanilla JavaScript
 - A hamburger navigation menu for mobile and tablet
+- Active navigation styling for standard `.html` and clean URLs
 - A hero section with appointment and location calls to action
 - Key outpatient care benefits
 - A contact call to action and professional footer
+- Placeholder pages for Services, Locations, and Contact
 
-The Services, Locations, Contact, and appointment enquiry experiences will be implemented in later milestones.
+Detailed Services, Locations, Contact, and appointment enquiry experiences will be implemented in later milestones.
 
 ## Technology
 
 - Semantic HTML5
 - Tailwind CSS through the CDN
 - Lucide icons through the CDN
-- Vanilla JavaScript for the responsive navigation menu
+- Vanilla JavaScript for loading shared components, responsive navigation, and active-page styling
 
 No build step is currently required.
 
@@ -29,21 +31,37 @@ No build step is currently required.
 ```text
 website/
 ├── index.html
+├── services.html
+├── locations.html
+├── contact.html
 ├── application.html
-├── validation.js
 ├── README.md
+├── components/
+│   ├── header.html
+│   └── footer.html
+├── css/
+├── js/
+│   ├── components.js
+│   ├── main.js
+│   ├── tailwind-config.js
+│   └── validation.js
 └── public/
-	├── images/
-	│   └── home-hero.jpg
-	└── screenshots/
-		└── home/
-			├── home_desktop.PNG
-			├── home_mobile.PNG
-			├── home_mobile_tablet_menu.PNG
-			└── home_tablet.PNG
+    ├── images/
+    │   └── home-hero.jpg
+    └── screenshots/
+        └── home/
+            ├── home_desktop.PNG
+            ├── home_mobile.PNG
+            ├── home_mobile_tablet_menu.PNG
+            └── home_tablet.PNG
 ```
 
-`application.html` and `validation.js` are reserved for the future appointment enquiry form.
+- `components/header.html` and `components/footer.html` contain the reusable site layout.
+- `js/components.js` loads the shared components and controls navigation behavior.
+- `js/tailwind-config.js` contains the shared Tailwind theme configuration.
+- `js/main.js` is reserved for future page-specific behavior.
+- `application.html` and `js/validation.js` are reserved for the future appointment enquiry form.
+- `css/` is reserved for custom styles that are not covered by Tailwind utilities.
 
 ## Run the website
 
