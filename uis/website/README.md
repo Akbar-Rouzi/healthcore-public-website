@@ -15,9 +15,9 @@ The current milestone includes:
 - A contact call to action and professional footer
 - A responsive Services page with three specialized medical practice cards and a Why HealthCore section
 - A responsive Locations directory with six US clinic cards, region filters, and phone links
-- A placeholder Contact page
+- A responsive Contact page with office contact links, appointment guidance, operating hours, and emergency information
 
-Contact and appointment enquiry experiences will be implemented in later milestones. Location appointment links currently lead to the application placeholder.
+The appointment enquiry form will be implemented in a later milestone. Locations and Contact appointment links currently lead to the application placeholder.
 
 ## Technology
 
@@ -80,6 +80,7 @@ website/
 - `js/locations.js` filters clinic cards by region and announces the visible result count.
 - `application.html` and `js/validation.js` are reserved for the future appointment enquiry form.
 - `css/locations.css` aligns the shared header and footer with the Locations references without changing other pages.
+- Contact page styling uses Tailwind utility classes directly in `contact.html`; the shared header and footer are used without page-specific overrides.
 - `public/screenshots/` contains the responsive UI/UX references for each implemented page.
 
 ## Run the website
@@ -213,3 +214,36 @@ The screenshots in [`public/screenshots/locations`](./public/screenshots/locatio
 - The interpreter support panel stacks its description and support number vertically.
 
 All Regions restores all six cards; Texas, Florida, and Georgia display three, two, and one respectively. Filters expose their selected state and announce results for screen readers. The support number `(800) HEALTH-CORE` remains display text pending a valid dialable number; appointment links lead to the existing application placeholder with the selected clinic in the URL. The page reuses the shared header and footer with Locations-specific styling for the reference layout.
+
+### Contact
+
+The screenshots in [`public/screenshots/contact`](./public/screenshots/contact/) guide the Contact page. Soft blue background accents frame four white contact cards, a navy appointment panel, operational hours, and a separate emergency information section. Content remains English-only, using the shared header with one mobile menu and no language selector.
+
+#### Desktop
+
+![HealthCore Contact page on desktop](./public/screenshots/contact/contact_desktop.png)
+
+- The introduction presents Contact HealthCore and its administrative support description.
+- General Enquiries, Austin HQ, Miami, and UK (London) appear in four rows, with icons on the left and email or phone links on the right.
+- At 1280px and above, the appointment panel and operational hours occupy a narrower column beside the contact cards.
+- The emergency notice spans the page below the main content. The reference footer places brand and email on the left, social links centrally, and copyright on the right; the implementation uses the existing shared footer.
+
+#### Tablet
+
+![HealthCore Contact page on tablet](./public/screenshots/contact/contact_tablet.png)
+
+- Contact cards fill the available width, keeping contact links beside the office details.
+- The appointment panel and operational hours stack below the cards.
+- The emergency information remains horizontal, with text wrapping as needed. The header and footer follow the shared components.
+
+#### Mobile
+
+![HealthCore Contact page on mobile](./public/screenshots/contact/contact_mobile.png)
+
+- Each card places its contact link below the description, aligned with the text beside the icon.
+- The appointment button spans the panel width, and the operational hours follow beneath it.
+- The emergency badge moves below the explanation. The reference centers footer content; the implementation retains the shared footer layout.
+
+Office contact links use `mailto:` and `tel:` destinations. The appointment button opens the existing application placeholder; no form submission or digital triage backend is implemented. Intake and HIPAA-compliance wording reproduces the supplied design and requires confirmation against the eventual service before publication. Time-zone badges reproduce the reference labels rather than indicating live local time.
+
+Chrome checks passed at 1588, 1280, 960, 768, 487, 375, and 320px: contact links, active navigation, mobile menu opening and Escape dismissal, and horizontal overflow. Desktop, tablet, and mobile browser screenshots were also visually reviewed against the references.
