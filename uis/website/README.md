@@ -14,9 +14,10 @@ The current milestone includes:
 - Key outpatient care benefits
 - A contact call to action and professional footer
 - A responsive Services page with three specialized medical practice cards and a Why HealthCore section
-- Placeholder pages for Locations and Contact
+- A responsive Locations directory with six US clinic cards, region filters, and phone links
+- A placeholder Contact page
 
-Detailed Locations, Contact, and appointment enquiry experiences will be implemented in later milestones.
+Contact and appointment enquiry experiences will be implemented in later milestones. Location appointment links currently lead to the application placeholder.
 
 ## Technology
 
@@ -44,6 +45,7 @@ website/
 ├── js/
 │   ├── components.js
 │   ├── main.js
+│   ├── locations.js
 │   ├── tailwind-config.js
 │   └── validation.js
 └── public/
@@ -61,6 +63,10 @@ website/
         │   ├── home_mobile.PNG
         │   ├── home_mobile_tablet_menu.PNG
         │   └── home_tablet.PNG
+        ├── locations/
+        │   ├── locations_desktop.png
+        │   ├── locations_mobile.png
+        │   └── locations_tablet.png
         └── services/
             ├── services_destop.png
             ├── services_mobile.png
@@ -71,8 +77,9 @@ website/
 - `js/components.js` loads the shared components and controls navigation behavior.
 - `js/tailwind-config.js` contains the shared Tailwind theme configuration.
 - `js/main.js` is reserved for future page-specific behavior.
+- `js/locations.js` filters clinic cards by region and announces the visible result count.
 - `application.html` and `js/validation.js` are reserved for the future appointment enquiry form.
-- `css/` is reserved for custom styles that are not covered by Tailwind utilities.
+- `css/locations.css` aligns the shared header and footer with the Locations references without changing other pages.
 - `public/screenshots/` contains the responsive UI/UX references for each implemented page.
 
 ## Run the website
@@ -111,7 +118,7 @@ The screenshots in [`public/screenshots/home`](./public/screenshots/home/) are t
 
 ![HealthCore home page on desktop](./public/screenshots/home/home_desktop.PNG)
 
-- The top header displays the compact HealthCore logo, centered navigation links, language selector, and account icon.
+- The top header displays the compact HealthCore logo, centered navigation links and account icon.
 - The hero uses a two-column layout: headline, description, calls to action, and benefits on the left; patient photography and accreditation details on the right.
 - The footer places company information on the left and contact and social links on the right.
 
@@ -120,7 +127,7 @@ The screenshots in [`public/screenshots/home`](./public/screenshots/home/) are t
 ![HealthCore home page on tablet](./public/screenshots/home/home_tablet.PNG)
 
 - The hero changes to a single-column layout, with the text and actions above the image.
-- The main navigation moves into a hamburger menu while the logo, language selector, and account icon remain visible.
+- The main navigation moves into a hamburger menu while the logo and account icon remain visible.
 - Benefit items remain in a three-column row beneath the hero image.
 
 #### Mobile
@@ -149,7 +156,7 @@ The page introduces Clinical Services & Excellence, followed by Specialized Medi
 
 ![HealthCore Services page on desktop](./public/screenshots/services/services_destop.png)
 
-- The header displays the logo, navigation with Services highlighted, language selector, and account icon.
+- The header displays the logo, navigation with Services highlighted and account icon.
 - Three medical practice cards sit side by side, each with a photo and category label above its icon, heading, description, and shaded list of included services.
 - The reference places an Accredited Outpatient Network label beside the clinical departments heading.
 - Why HealthCore uses two columns: the introduction and care continuity metric on the left, and a two-by-two benefit card grid on the right.
@@ -159,7 +166,7 @@ The page introduces Clinical Services & Excellence, followed by Specialized Medi
 
 ![HealthCore Services page on tablet](./public/screenshots/services/services_tablet.png)
 
-- The navigation moves into a hamburger menu while the logo, language selector, and account icon remain visible.
+- The navigation moves into a hamburger menu while the logo and account icon remain visible.
 - Medical practice cards stack vertically and use a horizontal layout, with photography on the left and service details on the right. Tablet-specific images support this taller crop.
 - The Why HealthCore introduction and full-width metric card appear above a two-column benefit grid.
 - The reference footer keeps brand, contact, social links, and copyright in a horizontal arrangement, allowing text to wrap.
@@ -171,7 +178,38 @@ The page introduces Clinical Services & Excellence, followed by Specialized Medi
 - The introduction wraps to fit the narrow viewport, and medical practice cards stack in a single column with photography above the details.
 - Why HealthCore stacks the introduction, metric, and all four benefit cards vertically, with padding between the content and the rounded panel edges.
 - Card heights adapt to their text, keeping longer benefits readable without clipping.
-- The compact header retains the language selector, account icon, and hamburger menu.
+- The compact header retains the account icon and hamburger menu.
 - The reference footer centers the brand, email, social links, and copyright in separate rows.
 
 These screenshots describe the target design; they do not establish an exact visual match for the current implementation. The shared footer currently groups copyright beneath the brand and email with the social links, and the desktop accreditation label is not yet implemented.
+
+### Locations
+
+The screenshots in [`public/screenshots/locations`](./public/screenshots/locations/) guide the US clinic directory. A pale blue introduction presents the clinic count and bilingual support, followed by region filters, six clinic cards, and an interpreter support panel. Clinic names, hours, and phone numbers follow the supplied references. Page content is English-only; Spanish labels are omitted and the phone support heading is translated. The shared header no longer includes the EN/ES language selector.
+
+#### Desktop
+
+![HealthCore Locations page on desktop](./public/screenshots/locations/locations_desktop.png)
+
+- The introduction places the heading and description on the left and summary badges on the right.
+- Region filters display their counts inline above a three-column clinic grid.
+- Each card contains the clinic category, name, city, hours, bilingual staff badge, phone link, and appointment link.
+- Phone and appointment actions sit side by side; the interpreter support panel spans the directory width.
+
+#### Tablet
+
+![HealthCore Locations page on tablet](./public/screenshots/locations/locations_tablet.png)
+
+- Summary badges stack beside the introduction, and the shared header uses its hamburger menu.
+- Clinic cards form two columns with their phone and appointment actions in one row.
+- Filters display their counts inline in one row.
+
+#### Mobile
+
+![HealthCore Locations page on mobile](./public/screenshots/locations/locations_mobile.png)
+
+- Summary badges move below the introduction, followed by the region filters. The UK notice shown in the mobile reference is omitted from the implementation.
+- Clinic cards stack in one column, with full-width phone and appointment actions on separate rows.
+- The interpreter support panel stacks its description and support number vertically.
+
+All Regions restores all six cards; Texas, Florida, and Georgia display three, two, and one respectively. Filters expose their selected state and announce results for screen readers. The support number `(800) HEALTH-CORE` remains display text pending a valid dialable number; appointment links lead to the existing application placeholder with the selected clinic in the URL. The page reuses the shared header and footer with Locations-specific styling for the reference layout.
