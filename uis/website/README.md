@@ -7,7 +7,7 @@ This folder contains HealthCore's public-facing website for patients and visitor
 The current milestone includes:
 
 - A responsive home page for desktop, tablet, and mobile
-- A shared header and footer loaded into each page with vanilla JavaScript
+- A shared header and footer loaded into each page with vanilla JavaScript, using the Home UI/UX reference consistently across all four pages
 - A hamburger navigation menu for mobile and tablet
 - Active navigation styling for standard `.html` and clean URLs
 - A hero section with appointment and location calls to action
@@ -186,7 +186,7 @@ These screenshots describe the target design; they do not establish an exact vis
 
 ### Locations
 
-The screenshots in [`public/screenshots/locations`](./public/screenshots/locations/) guide the US clinic directory. A pale blue introduction presents the clinic count and bilingual support, followed by region filters, six clinic cards, and an interpreter support panel. Clinic names, hours, and phone numbers follow the supplied references. Page content is English-only; Spanish labels are omitted and the phone support heading is translated. The shared header no longer includes the EN/ES language selector.
+The screenshots in [`public/screenshots/locations`](./public/screenshots/locations/) guide the US clinic directory. A pale blue introduction presents the clinic count and bilingual support, followed by region filters, six clinic cards, and an interpreter support panel. Clinic names, hours, and phone numbers follow the supplied references. Page content is English-only; Spanish labels are omitted and the phone support heading is translated. The shared header includes the EN/ES language control from the Home reference. Translation behavior is not implemented.
 
 #### Desktop
 
@@ -217,7 +217,7 @@ All Regions restores all six cards; Texas, Florida, and Georgia display three, t
 
 ### Contact
 
-The screenshots in [`public/screenshots/contact`](./public/screenshots/contact/) guide the Contact page. Soft blue background accents frame four white contact cards, a navy appointment panel, operational hours, and a separate emergency information section. Content remains English-only, using the shared header with one mobile menu and no language selector.
+The screenshots in [`public/screenshots/contact`](./public/screenshots/contact/) guide the Contact page. Soft blue background accents frame four white contact cards, a navy appointment panel, operational hours, and a separate emergency information section. Content remains English-only, using the shared header with one mobile menu and the EN/ES language control.
 
 #### Desktop
 
