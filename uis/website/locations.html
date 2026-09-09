@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Locations | HealthCore</title>
+    <link rel="stylesheet" href="./css/locations.css" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./js/tailwind-config.js"></script>
@@ -23,11 +24,214 @@
     <!-- Shared header -->
     <div id="header" class="sticky top-0 z-50"></div>
 
-    <!-- Page-specific content -->
-    <main class="flex flex-1 items-center justify-center">
-      <h1 class="text-4xl font-extrabold text-navy">
-        Locations Page
-      </h1>
+    <!-- Locations directory -->
+    <main class="flex-1 bg-[#f7f8fd]">
+      <section class="bg-[#eef3ff]" aria-labelledby="locations-heading">
+        <div class="mx-auto grid max-w-[1600px] gap-7 px-5 py-10 md:grid-cols-[minmax(0,1fr)_204px] md:items-center lg:px-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
+          <div>
+            <p class="inline-flex items-center gap-2 rounded-full bg-[#91e0fa] px-3 py-2 text-xs font-extrabold uppercase tracking-wide text-[#08657b]">
+              <i data-lucide="building-2" class="size-4 shrink-0" aria-hidden="true"></i>
+              <span>Outpatient network</span>
+            </p>
+            <h1 id="locations-heading" class="mt-5 text-3xl font-extrabold leading-tight text-navy md:text-4xl">United States Outpatient Clinics</h1>
+            <p class="mt-4 max-w-4xl text-lg leading-8 text-slate-600 lg:text-[22px] lg:leading-9">Dedicated clinical centers providing specialized daytime diagnostics, scheduled outpatient procedures, and routine wellness regimes.</p>
+          </div>
+          <div class="flex flex-wrap gap-3 md:flex-col lg:flex-row lg:self-end">
+            <div class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm">
+              <i data-lucide="badge-check" class="size-6 shrink-0 text-teal" aria-hidden="true"></i>
+              <div><p class="text-xs font-extrabold">Active Centers</p><p class="mt-1 font-extrabold text-navy">6 Locations</p></div>
+            </div>
+            <div class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm">
+              <i data-lucide="languages" class="size-6 shrink-0 text-teal" aria-hidden="true"></i>
+              <div><p class="text-xs font-extrabold">Bilingual Support</p><p class="mt-1 font-extrabold text-navy">100% Facilities</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="mx-auto max-w-[1600px] px-5 pb-24 lg:px-10 lg:pb-28">
+        <div class="flex flex-col gap-5 py-7 md:flex-row md:items-center md:justify-between">
+          <div role="group" aria-label="Filter clinics by region" class="grid shrink-0 grid-cols-4 gap-2 md:flex md:gap-3">
+            <button type="button" data-region-filter="all" aria-pressed="true" aria-controls="clinic-grid" class="min-h-11 rounded-lg px-3 py-3 text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:px-5 md:text-sm bg-[#032348] text-white">All Regions <span class="block md:inline">(6)</span></button>
+            <button type="button" data-region-filter="Texas" aria-pressed="false" aria-controls="clinic-grid" class="min-h-11 rounded-lg px-3 py-3 text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:px-5 md:text-sm bg-[#eef3ff] text-slate-600 hover:bg-blue-100">Texas <span class="block md:inline">(3)</span></button>
+            <button type="button" data-region-filter="Florida" aria-pressed="false" aria-controls="clinic-grid" class="min-h-11 rounded-lg px-3 py-3 text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:px-5 md:text-sm bg-[#eef3ff] text-slate-600 hover:bg-blue-100">Florida <span class="block md:inline">(2)</span></button>
+            <button type="button" data-region-filter="Georgia" aria-pressed="false" aria-controls="clinic-grid" class="min-h-11 rounded-lg px-3 py-3 text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:px-5 md:text-sm bg-[#eef3ff] text-slate-600 hover:bg-blue-100">Georgia <span class="block md:inline">(1)</span></button>
+          </div>
+        </div>
+        <p id="clinic-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true">Showing all 6 clinics.</p>
+        <div id="clinic-grid" class="grid gap-7 pt-7 md:grid-cols-2 lg:grid-cols-3">
+          <article data-region="Texas" class="flex min-w-0 flex-col rounded-2xl bg-white p-7 shadow-sm lg:p-8" aria-labelledby="clinic-0">
+            <p class="text-sm font-extrabold uppercase tracking-wide text-teal">Metropolitan outpatient</p>
+            <h2 id="clinic-0" class="mt-3 text-2xl font-bold leading-tight text-navy min-[900px]:text-[28px]">HealthCore Austin Central</h2>
+            <p class="mt-4 flex items-center gap-2 text-lg"><i data-lucide="map-pin" class="size-5 shrink-0 text-teal" aria-hidden="true"></i> Austin, TX</p>
+            <div class="mt-6 flex gap-3 rounded-xl bg-[#eef3ff] p-5">
+              <i data-lucide="clock" class="size-5 shrink-0 text-teal" aria-hidden="true"></i>
+              <div class="min-w-0">
+                <h3 class="text-xs font-extrabold uppercase tracking-wide">Operating hours</h3>
+                <p class="mt-2 text-lg font-bold text-navy">Mon–Fri 7am–8pm</p>
+                <p class="mt-2 text-base leading-6">Sat 9am–3pm</p>
+              </div>
+            </div>
+            <div class="mt-5 flex w-fit items-center gap-3 rounded-lg bg-[#e5edff] px-4 py-3">
+              <i data-lucide="globe" class="size-5 shrink-0 text-green-500" aria-hidden="true"></i>
+              <p class="text-xs font-extrabold leading-6"><span class="block text-navy">Bilingual staff available</span></p>
+            </div>
+            <div class="mt-auto flex flex-col gap-2 pt-7 md:flex-row">
+              <a href="tel:+15123408800" aria-label="Call HealthCore Austin Central at (512) 340-8800" class="flex min-h-14 min-w-0 flex-1 items-center justify-center gap-3 rounded-lg bg-[#032348] px-3 py-3 text-base font-bold text-white hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal">
+                <i data-lucide="phone" class="size-4 shrink-0" aria-hidden="true"></i> (512) 340-8800
+              </a>
+              <a href="application.html?clinic=Austin%20Central" aria-label="Request an appointment at HealthCore Austin Central" class="grid min-h-14 place-items-center rounded-lg bg-[#e5edff] p-3 text-navy hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:w-14">
+                <i data-lucide="calendar-plus" class="size-5" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <article data-region="Texas" class="flex min-w-0 flex-col rounded-2xl bg-white p-7 shadow-sm lg:p-8" aria-labelledby="clinic-1">
+            <p class="text-sm font-extrabold uppercase tracking-wide text-teal">Suburban diagnostic</p>
+            <h2 id="clinic-1" class="mt-3 text-2xl font-bold leading-tight text-navy min-[900px]:text-[28px]">HealthCore Austin North</h2>
+            <p class="mt-4 flex items-center gap-2 text-lg"><i data-lucide="map-pin" class="size-5 shrink-0 text-teal" aria-hidden="true"></i> Austin, TX</p>
+            <div class="mt-6 flex gap-3 rounded-xl bg-[#eef3ff] p-5">
+              <i data-lucide="clock" class="size-5 shrink-0 text-teal" aria-hidden="true"></i>
+              <div class="min-w-0">
+                <h3 class="text-xs font-extrabold uppercase tracking-wide">Operating hours</h3>
+                <p class="mt-2 text-lg font-bold text-navy">Mon–Fri 8am–7pm</p>
+                <p class="mt-2 text-base leading-6">Closed Saturdays &amp; Sundays</p>
+              </div>
+            </div>
+            <div class="mt-5 flex w-fit items-center gap-3 rounded-lg bg-[#e5edff] px-4 py-3">
+              <i data-lucide="globe" class="size-5 shrink-0 text-green-500" aria-hidden="true"></i>
+              <p class="text-xs font-extrabold leading-6"><span class="block text-navy">Bilingual staff available</span></p>
+            </div>
+            <div class="mt-auto flex flex-col gap-2 pt-7 md:flex-row">
+              <a href="tel:+15123408810" aria-label="Call HealthCore Austin North at (512) 340-8810" class="flex min-h-14 min-w-0 flex-1 items-center justify-center gap-3 rounded-lg bg-[#032348] px-3 py-3 text-base font-bold text-white hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal">
+                <i data-lucide="phone" class="size-4 shrink-0" aria-hidden="true"></i> (512) 340-8810
+              </a>
+              <a href="application.html?clinic=Austin%20North" aria-label="Request an appointment at HealthCore Austin North" class="grid min-h-14 place-items-center rounded-lg bg-[#e5edff] p-3 text-navy hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:w-14">
+                <i data-lucide="calendar-plus" class="size-5" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <article data-region="Texas" class="flex min-w-0 flex-col rounded-2xl bg-white p-7 shadow-sm lg:p-8" aria-labelledby="clinic-2">
+            <p class="text-sm font-extrabold uppercase tracking-wide text-teal">Regional specialty clinic</p>
+            <h2 id="clinic-2" class="mt-3 text-2xl font-bold leading-tight text-navy min-[900px]:text-[28px]">HealthCore San Antonio</h2>
+            <p class="mt-4 flex items-center gap-2 text-lg"><i data-lucide="map-pin" class="size-5 shrink-0 text-teal" aria-hidden="true"></i> San Antonio, TX</p>
+            <div class="mt-6 flex gap-3 rounded-xl bg-[#eef3ff] p-5">
+              <i data-lucide="clock" class="size-5 shrink-0 text-teal" aria-hidden="true"></i>
+              <div class="min-w-0">
+                <h3 class="text-xs font-extrabold uppercase tracking-wide">Operating hours</h3>
+                <p class="mt-2 text-lg font-bold text-navy">Mon–Fri 8am–6pm</p>
+                <p class="mt-2 text-base leading-6">Sat 9am–1pm</p>
+              </div>
+            </div>
+            <div class="mt-5 flex w-fit items-center gap-3 rounded-lg bg-[#e5edff] px-4 py-3">
+              <i data-lucide="globe" class="size-5 shrink-0 text-green-500" aria-hidden="true"></i>
+              <p class="text-xs font-extrabold leading-6"><span class="block text-navy">Bilingual staff available</span></p>
+            </div>
+            <div class="mt-auto flex flex-col gap-2 pt-7 md:flex-row">
+              <a href="tel:+12107204400" aria-label="Call HealthCore San Antonio at (210) 720-4400" class="flex min-h-14 min-w-0 flex-1 items-center justify-center gap-3 rounded-lg bg-[#032348] px-3 py-3 text-base font-bold text-white hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal">
+                <i data-lucide="phone" class="size-4 shrink-0" aria-hidden="true"></i> (210) 720-4400
+              </a>
+              <a href="application.html?clinic=San%20Antonio" aria-label="Request an appointment at HealthCore San Antonio" class="grid min-h-14 place-items-center rounded-lg bg-[#e5edff] p-3 text-navy hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:w-14">
+                <i data-lucide="calendar-plus" class="size-5" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <article data-region="Florida" class="flex min-w-0 flex-col rounded-2xl bg-white p-7 shadow-sm lg:p-8" aria-labelledby="clinic-3">
+            <p class="text-sm font-extrabold uppercase tracking-wide text-teal">Full outpatient pavilion</p>
+            <h2 id="clinic-3" class="mt-3 text-2xl font-bold leading-tight text-navy min-[900px]:text-[28px]">HealthCore Miami</h2>
+            <p class="mt-4 flex items-center gap-2 text-lg"><i data-lucide="map-pin" class="size-5 shrink-0 text-teal" aria-hidden="true"></i> Miami, FL</p>
+            <div class="mt-6 flex gap-3 rounded-xl bg-[#eef3ff] p-5">
+              <i data-lucide="clock" class="size-5 shrink-0 text-teal" aria-hidden="true"></i>
+              <div class="min-w-0">
+                <h3 class="text-xs font-extrabold uppercase tracking-wide">Operating hours</h3>
+                <p class="mt-2 text-lg font-bold text-navy">Mon–Fri 7am–8pm</p>
+                <p class="mt-2 text-base leading-6">Sat 9am–4pm</p>
+              </div>
+            </div>
+            <div class="mt-5 flex w-fit items-center gap-3 rounded-lg bg-[#e5edff] px-4 py-3">
+              <i data-lucide="globe" class="size-5 shrink-0 text-green-500" aria-hidden="true"></i>
+              <p class="text-xs font-extrabold leading-6"><span class="block text-navy">Bilingual staff available</span></p>
+            </div>
+            <div class="mt-auto flex flex-col gap-2 pt-7 md:flex-row">
+              <a href="tel:+13055107700" aria-label="Call HealthCore Miami at (305) 510-7700" class="flex min-h-14 min-w-0 flex-1 items-center justify-center gap-3 rounded-lg bg-[#032348] px-3 py-3 text-base font-bold text-white hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal">
+                <i data-lucide="phone" class="size-4 shrink-0" aria-hidden="true"></i> (305) 510-7700
+              </a>
+              <a href="application.html?clinic=Miami" aria-label="Request an appointment at HealthCore Miami" class="grid min-h-14 place-items-center rounded-lg bg-[#e5edff] p-3 text-navy hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:w-14">
+                <i data-lucide="calendar-plus" class="size-5" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <article data-region="Florida" class="flex min-w-0 flex-col rounded-2xl bg-white p-7 shadow-sm lg:p-8" aria-labelledby="clinic-4">
+            <p class="text-sm font-extrabold uppercase tracking-wide text-teal">Ambulatory center</p>
+            <h2 id="clinic-4" class="mt-3 text-2xl font-bold leading-tight text-navy min-[900px]:text-[28px]">HealthCore Orlando</h2>
+            <p class="mt-4 flex items-center gap-2 text-lg"><i data-lucide="map-pin" class="size-5 shrink-0 text-teal" aria-hidden="true"></i> Orlando, FL</p>
+            <div class="mt-6 flex gap-3 rounded-xl bg-[#eef3ff] p-5">
+              <i data-lucide="clock" class="size-5 shrink-0 text-teal" aria-hidden="true"></i>
+              <div class="min-w-0">
+                <h3 class="text-xs font-extrabold uppercase tracking-wide">Operating hours</h3>
+                <p class="mt-2 text-lg font-bold text-navy">Mon–Fri 8am–6pm</p>
+                <p class="mt-2 text-base leading-6">Closed Weekends</p>
+              </div>
+            </div>
+            <div class="mt-5 flex w-fit items-center gap-3 rounded-lg bg-[#e5edff] px-4 py-3">
+              <i data-lucide="globe" class="size-5 shrink-0 text-green-500" aria-hidden="true"></i>
+              <p class="text-xs font-extrabold leading-6"><span class="block text-navy">Bilingual staff available</span></p>
+            </div>
+            <div class="mt-auto flex flex-col gap-2 pt-7 md:flex-row">
+              <a href="tel:+14078926600" aria-label="Call HealthCore Orlando at (407) 892-6600" class="flex min-h-14 min-w-0 flex-1 items-center justify-center gap-3 rounded-lg bg-[#032348] px-3 py-3 text-base font-bold text-white hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal">
+                <i data-lucide="phone" class="size-4 shrink-0" aria-hidden="true"></i> (407) 892-6600
+              </a>
+              <a href="application.html?clinic=Orlando" aria-label="Request an appointment at HealthCore Orlando" class="grid min-h-14 place-items-center rounded-lg bg-[#e5edff] p-3 text-navy hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:w-14">
+                <i data-lucide="calendar-plus" class="size-5" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <article data-region="Georgia" class="flex min-w-0 flex-col rounded-2xl bg-white p-7 shadow-sm lg:p-8" aria-labelledby="clinic-5">
+            <p class="text-sm font-extrabold uppercase tracking-wide text-teal">Regional care hub</p>
+            <h2 id="clinic-5" class="mt-3 text-2xl font-bold leading-tight text-navy min-[900px]:text-[28px]">HealthCore Atlanta</h2>
+            <p class="mt-4 flex items-center gap-2 text-lg"><i data-lucide="map-pin" class="size-5 shrink-0 text-teal" aria-hidden="true"></i> Atlanta, GA</p>
+            <div class="mt-6 flex gap-3 rounded-xl bg-[#eef3ff] p-5">
+              <i data-lucide="clock" class="size-5 shrink-0 text-teal" aria-hidden="true"></i>
+              <div class="min-w-0">
+                <h3 class="text-xs font-extrabold uppercase tracking-wide">Operating hours</h3>
+                <p class="mt-2 text-lg font-bold text-navy">Mon–Fri 8am–7pm</p>
+                <p class="mt-2 text-base leading-6">Closed Weekends</p>
+              </div>
+            </div>
+            <div class="mt-5 flex w-fit items-center gap-3 rounded-lg bg-[#e5edff] px-4 py-3">
+              <i data-lucide="globe" class="size-5 shrink-0 text-green-500" aria-hidden="true"></i>
+              <p class="text-xs font-extrabold leading-6"><span class="block text-navy">Bilingual staff available</span></p>
+            </div>
+            <div class="mt-auto flex flex-col gap-2 pt-7 md:flex-row">
+              <a href="tel:+14043309900" aria-label="Call HealthCore Atlanta at (404) 330-9900" class="flex min-h-14 min-w-0 flex-1 items-center justify-center gap-3 rounded-lg bg-[#032348] px-3 py-3 text-base font-bold text-white hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal">
+                <i data-lucide="phone" class="size-4 shrink-0" aria-hidden="true"></i> (404) 330-9900
+              </a>
+              <a href="application.html?clinic=Atlanta" aria-label="Request an appointment at HealthCore Atlanta" class="grid min-h-14 place-items-center rounded-lg bg-[#e5edff] p-3 text-navy hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal md:w-14">
+                <i data-lucide="calendar-plus" class="size-5" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <section class="mt-14 rounded-2xl bg-[#eef3ff] p-6 md:p-8 lg:p-10" aria-labelledby="support-heading">
+          <div class="flex items-start gap-5">
+            <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-white"><i data-lucide="headset" class="size-6 text-teal" aria-hidden="true"></i></span>
+            <div class="flex min-w-0 flex-1 flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div class="max-w-[850px]">
+                <h2 id="support-heading" class="text-xl font-bold text-navy">Centralized Telephone Assistance &amp; Interpreters</h2>
+                <p class="mt-3 text-lg leading-8 text-slate-600">All US clinics feature certified medical interpreters. If you need support in another dialect or sign language, please inform our triage team prior to arrival.</p>
+              </div>
+              <span class="inline-flex min-h-12 max-w-full items-center justify-center gap-2 self-start rounded-lg bg-white px-3 py-3 text-xs font-bold text-navy md:shrink-0 md:self-center lg:gap-3 lg:px-5 lg:text-sm">
+                <i data-lucide="phone-call" class="size-4 shrink-0 text-teal" aria-hidden="true"></i> (800) HEALTH-CORE
+              </span>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <!-- Shared footer -->
@@ -35,5 +239,6 @@
 
     <!-- Shared component behavior -->
     <script src="./js/components.js"></script>
+    <script src="./js/locations.js"></script>
   </body>
 </html>
