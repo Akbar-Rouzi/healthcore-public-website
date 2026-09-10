@@ -17,7 +17,7 @@ The current milestone includes:
 - A responsive Locations directory with six US clinic cards, region filters, and phone links
 - A responsive Contact page with office contact links, appointment guidance, operating hours, and emergency information
 
-The appointment enquiry form will be implemented in a later milestone. Locations and Contact appointment links currently lead to the application placeholder.
+The patient enquiry form collects contact details, appointment preferences, patient history, and a health concern. Locations and Contact appointment links open this form. Client-side validation and inline error messages are implemented. Backend submission remains reserved for a later milestone.
 
 ## Technology
 
@@ -78,7 +78,7 @@ website/
 - `js/tailwind-config.js` contains the shared Tailwind theme configuration.
 - `js/main.js` is reserved for future page-specific behavior.
 - `js/locations.js` filters clinic cards by region and announces the visible result count.
-- `application.html` and `js/validation.js` are reserved for the future appointment enquiry form.
+- `application.html` contains the patient enquiry form, styled with Tailwind utility classes directly in the HTML. `js/application.js` handles conditional fields, inline errors, the live character counter, and clinic preselection. `js/validation.js` contains the field rules, calendar calculations, and clinic-hours checks.
 - Locations page styling uses Tailwind utility classes directly in `locations.html`; the shared header and footer are used without page-specific overrides.
 - Contact page styling uses Tailwind utility classes directly in `contact.html`; the shared header and footer are used without page-specific overrides.
 - `public/ui-ux/` contains the responsive UI/UX references for each implemented page.
@@ -244,6 +244,27 @@ The screenshots in [`public/ui-ux/contact`](./public/ui-ux/contact/) guide the C
 - The appointment button spans the panel width, and the operational hours follow beneath it.
 - The emergency badge moves below the explanation. The reference centers footer content; the implementation retains the shared footer layout.
 
-Office contact links use `mailto:` and `tel:` destinations. The appointment button opens the existing application placeholder; no form submission or digital triage backend is implemented. Intake and HIPAA-compliance wording reproduces the supplied design and requires confirmation against the eventual service before publication. Time-zone badges reproduce the reference labels rather than indicating live local time.
+Office contact links use `mailto:` and `tel:` destinations. The appointment button opens the patient enquiry form; no form submission or digital triage backend is implemented. Intake and HIPAA-compliance wording reproduces the supplied design and requires confirmation against the eventual service before publication. Time-zone badges reproduce the reference labels rather than indicating live local time.
 
 Chrome checks passed at 1588, 1280, 960, 768, 487, 375, and 320px: contact links, active navigation, mobile menu opening and Escape dismissal, and horizontal overflow. Desktop, tablet, and mobile browser screenshots were also visually reviewed against the references.
+
+## Patient enquiry page
+
+The form in `application.html` follows the [desktop](./public/ui-ux/application/application_desktop.png), [tablet](./public/ui-ux/application/application_tablet.png), and [mobile](./public/ui-ux/application/application_mobile.png) references. It retains the shared header and footer, with four numbered sections and fields arranged in two columns from 640px and one column on smaller screens.
+
+The updated partnerships panel appears above the patient notice from 640px and below the form on mobile, with its contact link grouped with the description. The shared site header and footer remain consistent with the other pages.
+
+The original 16 field names follow the enquiry specification. Returning patients can also enter an optional `patient_id` in the format `HC-A3F291`. Preferred time uses accessible Morning, Afternoon, and Evening radio cards matching the updated reference, arranged in three columns from 640px and stacked on mobile. The field name remains `preferred_time`. Clinic options match the six Locations cards, and incoming `?clinic=` links preselect the corresponding clinic. Selecting insurance Yes reveals provider and member ID fields; otherwise those fields are hidden and disabled. The health concern includes a live character count.
+
+Required fields are marked visually and with accessibility attributes. Inline errors appear as the user types, on blur/change, and after submission, clear as fields are corrected, and are associated with their controls. Submit validates all fields and focuses the first invalid control. Valid details open the simulated HealthCore thank-you modal with focus inside it. The close button or Escape dismisses the modal, clears all form values and validation state, hides conditional fields, resets the character counter, and focuses First name. Editing a field hides the confirmation. Submission is local only; no patient information is sent or stored. The footer is unchanged.
+
+Chrome checks passed at 1280, 1024, 768, 640, 390, 375, and 320px with no horizontal overflow. Desktop, tablet, and mobile screenshots were reviewed. Clinic preselection, insurance field visibility and exclusion from form data, character counting, and mobile navigation opening and Escape dismissal passed, with no JavaScript exceptions.
+### Validation behavior
+
+Names accept 2–50 Unicode letters, including accented letters. Date of birth accepts ages 0–120 inclusive; Paediatric Care requires an age under 18. Phone numbers require a leading `+`, a nonzero country-code prefix, and 7–15 digits, with optional spaces or hyphens. Required dropdowns accept only the specified options.
+
+Preferred dates start at the next Monday–Friday business day and end 60 calendar days from the user's local date. Public holidays are not excluded. Calendar arithmetic avoids daylight-saving shifts. An evening selection at a clinic closing at 6pm or 7pm shows a nonblocking warning; evening selections on dates when the clinic is closed or closes by 5pm are invalid. Clinic hours mirror the Locations page.
+
+Insurance details are required only when Yes is selected (provider: up to 100 characters; member ID: 6–20 alphanumeric characters). Patient ID is optional and validated only for returning patients. Hidden fields are disabled, excluded from form data, and have their errors cleared. Health concern requires 20–500 characters with a live counter and remaining-character error. Contact consent is required.
+
+Browser validation checks passed for exact inline messages, error associations and clearing, first-invalid focus, conditional fields, Paediatric Care dependencies, evening warnings, character limits, consent, and the simulated confirmation. Error layouts were checked at 1280, 1024, 768, 640, 390, 375, and 320px without horizontal overflow or JavaScript exceptions.

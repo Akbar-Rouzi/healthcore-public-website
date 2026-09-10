@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Enquiry | HealthCore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="./js/validation.js?v=6" defer></script>
+    <script src="./js/application.js?v=8" defer></script>
+  </head>
+  <body class="bg-[#f7f9ff] flex min-h-screen flex-col font-sans text-slate-700">
+    <div id="header" class="sticky top-0 z-50"></div>
+    <main class="flex-1">
+      <section class="bg-[#f0f4ff] py-[30px] sm:py-8" aria-labelledby="enquiry-heading">
+        <div class="mx-auto w-[calc(100%-32px)] max-w-[840px]">
+          <nav aria-label="Breadcrumb" class="mb-4 flex items-center gap-3 text-xs">
+            <a href="index.html" class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal hover:underline">Home</a>
+            <i data-lucide="chevron-right" class="size-3" aria-hidden="true"></i>
+            <span aria-current="page" class="font-extrabold text-navy">Patient Enquiry</span>
+          </nav>
+          <h1 id="enquiry-heading" class="text-2xl font-extrabold leading-tight text-navy sm:text-3xl">Outpatient Care Enquiry</h1>
+          <p class="mt-3 text-sm leading-7 text-slate-600 sm:text-base">Connect directly with our clinical administrative desk to discuss consultations, diagnostic reviews, and preventive health screenings across our regional centers.</p>
+        </div>
+      </section>
+      <div class="mx-auto w-[calc(100%-32px)] max-w-[840px] flex flex-col pt-6 pb-[100px] sm:pb-[120px]">
+        <aside class="flex items-start gap-3 rounded-xl bg-[#e5eeff] p-[18px] sm:gap-4 sm:p-6" aria-labelledby="notice-heading">
+          <span class="grid h-8 basis-8 shrink-0 grow-0 place-items-center rounded-lg bg-white text-teal sm:h-10 sm:basis-10"><i data-lucide="info" class="size-5" aria-hidden="true"></i></span>
+          <div>
+            <h2 id="notice-heading" class="text-sm font-extrabold text-navy">Patient Notice &amp; Scheduling Protocol</h2>
+            <p class="mt-1 text-xs leading-6 sm:text-sm">Tell us how we can help. This is a patient enquiry form, not an instant booking system. Our front desk team will call you back to review your request and confirm appointment details. Your preferred date and time are subject to confirmation.</p>
+          </div>
+        </aside>
+
+        <form id="patient-enquiry" class="mt-6 rounded-xl bg-white p-6 shadow-[0_3px_5px_#12345b14] sm:mt-[30px] min-[901px]:p-12" novalidate aria-label="Patient enquiry" method="post" onsubmit="event.preventDefault()">
+          <p id="validation-summary" class="mb-6 rounded-lg bg-red-50 p-4 text-sm text-red-700 [&[hidden]]:hidden" role="alert" hidden></p>
+          <section class="m-0 min-w-0 border-0 border-b border-[#dfe8fc] pb-11" aria-labelledby="personal-heading">
+            <h2 id="personal-heading" class="mb-[30px] flex items-center gap-[7px] text-base font-extrabold text-navy sm:gap-[9px] sm:text-lg"><span class="grid h-7 basis-7 shrink-0 grow-0 place-items-center rounded-full bg-[#eef3ff] text-xs" aria-hidden="true">1</span>Personal Details <span class="ml-auto text-[8px] uppercase tracking-[.03em] text-slate-600 sm:text-[9px]">* Required fields</span></h2>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+              <div class="min-w-0">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="first-name">First name <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px]" id="first-name" name="first_name" type="text" autocomplete="given-name" placeholder="e.g. Eleanor" aria-required="true" />
+              </div>
+              <div class="min-w-0">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="last-name">Last name <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px]" id="last-name" name="last_name" type="text" autocomplete="family-name" placeholder="e.g. Vance" aria-required="true" />
+              </div>
+              <div class="min-w-0">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="date-of-birth">Date of birth <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px] appearance-none [&::-webkit-date-and-time-value]:text-left" id="date-of-birth" name="date_of_birth" type="date" autocomplete="bday" aria-required="true" />
+              </div>
+              <div class="min-w-0">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="email">Email address <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px]" id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" aria-required="true" aria-describedby="email-help" />
+                <p id="email-help" class="mt-[7px] text-xs leading-[1.7] text-slate-500">Use an email address where we can contact you.</p>
+              </div>
+              <div class="min-w-0">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="phone">Phone number <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px]" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 305 555 0191" aria-required="true" aria-describedby="phone-help" />
+                <p id="phone-help" class="mt-[7px] text-xs leading-[1.7] text-slate-500">Please include your country and area code.</p>
+              </div>
+              <div class="min-w-0">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="preferred-language">Preferred language <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <select class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px] pr-7" id="preferred-language" name="preferred_language" aria-required="true">
+                  <option value="">Select preferred language</option>
+                  <option value="English">English</option>
+                  <option value="Spanish">Spanish</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <section class="mx-0 mb-0 mt-11 min-w-0 border-0 border-b border-[#dfe8fc] pb-11" aria-labelledby="preferences-heading">
+            <h2 id="preferences-heading" class="mb-[30px] flex items-center gap-[7px] text-base font-extrabold text-navy sm:gap-[9px] sm:text-lg"><span class="grid h-7 basis-7 shrink-0 grow-0 place-items-center rounded-full bg-[#eef3ff] text-xs" aria-hidden="true">2</span>Appointment Preferences</h2>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+              <div class="min-w-0">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="preferred-clinic">Preferred clinic <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <select class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px] pr-7" id="preferred-clinic" name="preferred_clinic" aria-required="true">
+                  <option value="">Select a HealthCore facility</option>
+                  <option value="HealthCore Austin Central">HealthCore Austin Central</option>
+                  <option value="HealthCore Austin North">HealthCore Austin North</option>
+                  <option value="HealthCore San Antonio">HealthCore San Antonio</option>
+                  <option value="HealthCore Miami">HealthCore Miami</option>
+                  <option value="HealthCore Orlando">HealthCore Orlando</option>
+                  <option value="HealthCore Atlanta">HealthCore Atlanta</option>
+                </select>
+              </div>
+              <div class="min-w-0">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="service-type">Service needed <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <select class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px] pr-7" id="service-type" name="service_type" aria-required="true">
+                  <option value="">Select service type</option>
+                  <option value="Primary Care">Primary Care</option>
+                  <option value="Chronic Disease Management">Chronic Disease Management</option>
+                  <option value="Specialist Consultation">Specialist Consultation</option>
+                  <option value="Preventive Health">Preventive Health</option>
+                  <option value="Women's Health">Women's Health</option>
+                  <option value="Paediatric Care">Paediatric Care</option>
+                  <option value="Mental Health">Mental Health</option>
+                </select>
+              </div>
+              <div class="min-w-0">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="preferred-date">Preferred date <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px] appearance-none [&::-webkit-date-and-time-value]:text-left" id="preferred-date" name="preferred_date" type="date" aria-required="true" aria-describedby="date-help" />
+                <p id="date-help" class="mt-[7px] text-xs leading-[1.7] text-slate-500">Choose at least 1 business day from today and no more than 60 days ahead.</p>
+              </div>
+              <div class="min-w-0 sm:col-span-2">
+                <p id="preferred-time-label" class="mb-3 text-xs font-extrabold text-slate-700">Preferred time of day <span class="text-[#c92935]" aria-hidden="true">*</span></p>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3" role="radiogroup" aria-labelledby="preferred-time-label" aria-required="true">
+                  <label class="relative min-w-0 cursor-pointer">
+                    <input class="peer sr-only" type="radio" name="preferred_time" value="Morning" aria-required="true" />
+                    <span class="block h-full rounded-xl border-2 border-transparent bg-[#f6f8fe] p-4 text-navy transition-colors hover:bg-[#eef3ff] peer-checked:border-teal peer-checked:bg-[#eef5ff] peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-teal peer-aria-[invalid=true]:border-red-600 peer-checked:[&_.time-indicator]:bg-teal">
+                      <span class="flex items-center justify-between gap-3"><span class="text-base font-extrabold">Morning</span><i data-lucide="sun" class="size-5 shrink-0 text-teal" aria-hidden="true"></i></span>
+                      <span class="mt-3 block text-xs text-slate-500">7:00 AM – 12:00 PM</span>
+                      <span class="time-indicator mt-5 block h-0.5 rounded-full bg-transparent" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="relative min-w-0 cursor-pointer">
+                    <input class="peer sr-only" type="radio" name="preferred_time" value="Afternoon" aria-required="true" />
+                    <span class="block h-full rounded-xl border-2 border-transparent bg-[#f6f8fe] p-4 text-navy transition-colors hover:bg-[#eef3ff] peer-checked:border-teal peer-checked:bg-[#eef5ff] peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-teal peer-aria-[invalid=true]:border-red-600 peer-checked:[&_.time-indicator]:bg-teal">
+                      <span class="flex items-center justify-between gap-3"><span class="text-base font-extrabold">Afternoon</span><i data-lucide="sunset" class="size-5 shrink-0 text-teal" aria-hidden="true"></i></span>
+                      <span class="mt-3 block text-xs text-slate-500">12:00 PM – 5:00 PM</span>
+                      <span class="time-indicator mt-5 block h-0.5 rounded-full bg-transparent" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="relative min-w-0 cursor-pointer">
+                    <input class="peer sr-only" type="radio" name="preferred_time" value="Evening" aria-required="true" />
+                    <span class="block h-full rounded-xl border-2 border-transparent bg-[#f6f8fe] p-4 text-navy transition-colors hover:bg-[#eef3ff] peer-checked:border-teal peer-checked:bg-[#eef5ff] peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-teal peer-aria-[invalid=true]:border-red-600 peer-checked:[&_.time-indicator]:bg-teal">
+                      <span class="flex items-center justify-between gap-3"><span class="text-base font-extrabold">Evening</span><i data-lucide="moon" class="size-5 shrink-0 text-teal" aria-hidden="true"></i></span>
+                      <span class="mt-3 block text-xs text-slate-500">5:00 PM – 8:00 PM</span>
+                      <span class="time-indicator mt-5 block h-0.5 rounded-full bg-transparent" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mx-0 mb-0 mt-11 min-w-0 border-0 border-b border-[#dfe8fc] pb-11" aria-labelledby="history-heading">
+            <h2 id="history-heading" class="mb-[30px] flex items-center gap-[7px] text-base font-extrabold text-navy sm:gap-[9px] sm:text-lg"><span class="grid h-7 basis-7 shrink-0 grow-0 place-items-center rounded-full bg-[#eef3ff] text-xs" aria-hidden="true">3</span>Patient History &amp; Coverage</h2>
+            <div class="m-0 min-w-0 rounded-lg border-0 bg-[#f6f8fe] p-4">
+              <div class="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center sm:gap-5" role="radiogroup" aria-labelledby="new-patient-label" aria-required="true">
+                <div>
+                  <p id="new-patient-label" class="mb-[3px] block text-xs font-extrabold text-slate-700">Is this your first visit to HealthCore? <span class="text-[#c92935]" aria-hidden="true">*</span></p>
+                  <p class="mt-[7px] text-xs leading-[1.7] text-slate-500">Helps us find your existing records before your visit.</p>
+                </div>
+                <div class="flex shrink-0 gap-5">
+                  <label class="flex min-h-11 cursor-pointer items-center gap-2 text-sm"><input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal size-5 shrink-0 accent-teal" type="radio" name="new_patient" aria-controls="returning-patient-details" value="Yes" /> Yes</label>
+                  <label class="flex min-h-11 cursor-pointer items-center gap-2 text-sm"><input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal size-5 shrink-0 accent-teal" type="radio" name="new_patient" aria-controls="returning-patient-details" value="No" /> No</label>
+                </div>
+              </div>
+            </div>
+            <div id="returning-patient-details" class="mt-5 min-w-0 [&[hidden]]:hidden" hidden>
+              <label class="mb-2 block text-xs font-extrabold text-slate-700" for="patient-id">Patient ID <span class="font-normal text-slate-500">(optional)</span></label>
+              <input id="patient-id" name="patient_id" type="text" placeholder="HC-A3F291" aria-describedby="patient-id-help" disabled class="block min-h-[46px] w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 sm:text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal" />
+              <p id="patient-id-help" class="mt-2 text-xs text-slate-500">If you know your Patient ID, enter HC- followed by 6 letters or numbers.</p>
+            </div>
+            <div class="mx-0 mb-0 mt-6 min-w-0 rounded-lg border-0 bg-[#f6f8fe] p-4">
+              <div class="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center sm:gap-5" role="radiogroup" aria-labelledby="insurance-label" aria-required="true">
+                <div>
+                  <p id="insurance-label" class="mb-[3px] block text-xs font-extrabold text-slate-700">Do you have health insurance? <span class="text-[#c92935]" aria-hidden="true">*</span></p>
+                  <p class="mt-[7px] text-xs leading-[1.7] text-slate-500">Share your coverage details for the front desk to review.</p>
+                </div>
+                <div class="flex shrink-0 gap-5">
+                  <label class="flex min-h-11 cursor-pointer items-center gap-2 text-sm"><input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal size-5 shrink-0 accent-teal" type="radio" name="has_insurance" value="Yes" aria-controls="insurance-details" /> Yes</label>
+                  <label class="flex min-h-11 cursor-pointer items-center gap-2 text-sm"><input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal size-5 shrink-0 accent-teal" type="radio" name="has_insurance" value="No" aria-controls="insurance-details" /> No</label>
+                </div>
+              </div>
+              <div id="insurance-details" class="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 mt-5 [&[hidden]]:hidden" hidden>
+                <div class="min-w-0">
+                  <label class="mb-2 block text-xs font-extrabold text-slate-700" for="insurance-provider">Insurance provider <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                  <input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px]" id="insurance-provider" type="text" name="insurance_provider" placeholder="e.g. Blue Cross Blue Shield" disabled />
+                </div>
+                <div class="min-w-0">
+                  <label class="mb-2 block text-xs font-extrabold text-slate-700" for="insurance-member-id">Member ID <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                  <input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[46px]" id="insurance-member-id" type="text" name="insurance_member_id" placeholder="e.g. W982470123" disabled />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mx-0 mb-0 mt-11 min-w-0 border-0 border-b border-[#dfe8fc] pb-11" aria-labelledby="concern-heading">
+            <h2 id="concern-heading" class="mb-[30px] flex items-center gap-[7px] text-base font-extrabold text-navy sm:gap-[9px] sm:text-lg"><span class="grid h-7 basis-7 shrink-0 grow-0 place-items-center rounded-full bg-[#eef3ff] text-xs" aria-hidden="true">4</span>Health Concern</h2>
+            <div class="min-w-0">
+              <div class="flex items-start justify-between gap-4 sm:items-baseline">
+                <label class="mb-2 block text-xs font-extrabold text-slate-700" for="health-concern">Brief description of your health concern <span class="text-[#c92935]" aria-hidden="true">*</span></label>
+                <span id="concern-counter" class="max-w-[88px] shrink text-right text-[10px] text-slate-500 sm:max-w-none sm:shrink-0"><span id="concern-count">0</span> / 500 characters</span>
+              </div>
+              <textarea class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal block w-full min-w-0 rounded-lg border border-[#e8edf4] bg-white p-3 text-base text-slate-700 placeholder:text-slate-500 placeholder:opacity-100 sm:text-sm min-h-[130px] resize-y leading-[1.8]" id="health-concern" name="health_concern" rows="4" aria-required="true" aria-describedby="concern-help concern-counter" placeholder="Please describe your symptoms, how long you've noticed them, or any specific questions you have for the clinician..."></textarea>
+              <p id="concern-help" class="mt-[7px] text-xs leading-[1.7] text-slate-500">Please share your reason for visiting, symptom duration, or general questions (20–500 characters).</p>
+            </div>
+            <aside class="mt-[18px] flex items-start gap-3 rounded-lg bg-[#fff0f1] p-4 text-xs leading-[1.8] text-[#b4232c]">
+              <i data-lucide="asterisk" class="size-5 shrink-0" aria-hidden="true"></i>
+              <p><strong>Medical Emergency Notice:</strong> This form is for non-emergency enquiries. For a medical emergency, call <a href="tel:911" class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal font-bold underline">911</a> or visit your nearest emergency department.</p>
+            </aside>
+          </section>
+
+          <label class="mt-11 flex cursor-pointer items-start gap-3 text-xs leading-[1.8]" for="contact-consent">
+            <input class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal size-5 shrink-0 accent-teal mt-0.5" id="contact-consent" name="contact_consent" type="checkbox" value="Yes" aria-required="true" />
+            <span>I consent to HealthCore contacting me via phone call, SMS, or email regarding this appointment enquiry and pertinent health information. <span class="text-[#c92935]" aria-hidden="true">*</span></span>
+          </label>
+          <div class="mt-7 flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <p id="submission-note" class="max-w-[380px] text-xs leading-[1.8] text-slate-500">Demo form: submission is simulated and no enquiry data is sent.</p>
+            <button type="submit" class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal flex min-h-12 shrink-0 items-center justify-center gap-2.5 rounded-md bg-navy px-7 py-3 text-sm font-extrabold text-white hover:bg-[#1c466f] cursor-pointer" aria-describedby="submission-note">Submit Enquiry <i data-lucide="arrow-right" class="size-4" aria-hidden="true"></i></button>
+          </div>
+          <dialog id="submission-status" class="m-auto max-h-[calc(100dvh-32px)] w-[calc(100%-32px)] max-w-xl overflow-y-auto rounded-2xl border border-mint bg-white p-6 text-sm leading-7 text-navy shadow-2xl backdrop:bg-navy/60 sm:p-8" aria-labelledby="confirmation-heading" aria-describedby="confirmation-description">
+            <button id="close-confirmation" type="button" autofocus aria-label="Close confirmation" class="mb-3 ml-auto flex size-11 items-center justify-center rounded-full text-navy hover:bg-cloud focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"><i data-lucide="x" class="size-5" aria-hidden="true"></i></button>
+            <h2 id="confirmation-heading" class="text-lg font-extrabold">Thank you for reaching out to HealthCore.</h2>
+            <p id="confirmation-description" class="mt-3">We have received your enquiry. A member of our front desk team will contact you within 1 business day to confirm your appointment details and answer any questions.</p>
+            <p class="mt-3">If you need urgent assistance, please call your preferred clinic directly using the numbers listed on our website.</p>
+            <p class="mt-3">We look forward to caring for you.</p>
+          </dialog>
+        </form>
+
+        <aside class="order-last mt-8 flex items-start gap-4 rounded-xl border border-transparent bg-[#f0f4ff] p-5 sm:order-first sm:mb-4 sm:mt-0 sm:items-center sm:border-[#dfe8fc] sm:p-6" aria-labelledby="partnership-heading">
+          <span class="grid size-9 shrink-0 place-items-center rounded-full bg-blue-100 text-navy"><i data-lucide="building-2" class="size-5" aria-hidden="true"></i></span>
+          <div>
+            <h2 id="partnership-heading" class="text-sm font-extrabold text-navy">Institutional &amp; Provider Partnerships</h2>
+            <p class="mt-1 text-xs leading-6">Are you a healthcare provider or organisation looking to partner with HealthCore? Contact our operations team at
+              <a class="mt-3 block font-extrabold text-[#087e98] underline [overflow-wrap:anywhere] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-teal sm:mt-0 sm:inline" href="mailto:partnerships@healthcore.com">partnerships@healthcore.com ↗</a>
+            </p>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <div id="footer"></div>
+    <script src="./js/components.js"></script>
+  </body>
+</html>
