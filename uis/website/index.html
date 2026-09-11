@@ -1,85 +1,165 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>HealthCore | Outpatient Healthcare Services</title>
 
-  <meta name="description"
-    content="HealthCore provides same-day outpatient appointments, extended hours, and bilingual care across 12 clinics in the US and UK." />
+  <meta
+    name="description"
+    content="HealthCore provides same-day outpatient appointments, extended hours, and bilingual care across 12 clinics in the US and UK."
+  />
 
+  <link rel="canonical" href="https://www.healthcore.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="HealthCore | Outpatient Healthcare Services" />
+  <meta
+    property="og:description"
+    content="HealthCore provides same-day outpatient appointments, extended hours, and bilingual care across 12 clinics in the US and UK."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.healthcore.com/" />
+  <meta
+    property="og:image"
+    content="https://www.healthcore.com/images/home-hero.jpg"
+  />
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./js/tailwind-config.js"></script>
+
+  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <!---JSON-LD is structured information for search engines-->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- JSON-LD structured data for search engines -->
   <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "MedicalOrganization",
-        "name": "HealthCore",
-        "description": "Outpatient healthcare services across the US and UK.",
-        "email": "info@healthcore.com",
-        "url": "https://www.healthcore.com"
-      }
-    </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "HealthCore",
+      "description": "Outpatient healthcare network offering primary care, specialist consultations, chronic disease management, and preventive health programmes.",
+      "url": "https://www.healthcore.com",
+      "foundingDate": "2011",
+      "logo": "https://www.healthcore.com/logo.png",
+      "availableLanguage": ["English", "Spanish"],
+      "areaServed": ["US", "GB"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Austin",
+        "addressRegion": "Texas",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-512-340-8800",
+        "contactType": "patient services",
+        "availableLanguage": ["English", "Spanish"]
+      },
+      "sameAs": [
+        "https://linkedin.com/company/healthcore",
+        "https://facebook.com/healthcore",
+        "https://instagram.com/healthcore"
+      ]
+    }
+  </script>
 </head>
 
 <body class="bg-white font-sans text-slate-700">
   <!-- Header -->
   <div id="header" class="sticky top-0 z-50"></div>
+
   <main>
     <!-- Hero -->
-    <section class="bg-gradient-to-br from-cloud via-white to-cyan-50">
-      <div class="mx-auto grid min-h-[620px] max-w-7xl items-center gap-12 px-5 py-14 md:px-8 lg:grid-cols-2 lg:py-20">
+    <section
+      class="bg-gradient-to-br from-cloud via-white to-cyan-50"
+      aria-labelledby="hero-heading"
+    >
+      <div
+        class="mx-auto grid min-h-[620px] max-w-7xl items-center gap-12 px-5 py-14 md:px-8 lg:grid-cols-2 lg:py-20"
+      >
         <div>
           <p
-            class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-navy shadow-sm">
-            <span class="size-2 rounded-full bg-mint"></span>
+            class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-navy shadow-sm"
+          >
+            <span
+              class="size-2 rounded-full bg-mint"
+              aria-hidden="true"
+            ></span>
             Outpatient clinical excellence
           </p>
 
-          <h1 class="max-w-xl text-4xl font-extrabold leading-tight text-navy sm:text-5xl">
+          <h1
+            id="hero-heading"
+            class="max-w-xl text-4xl font-extrabold leading-tight text-navy sm:text-5xl"
+          >
             Healthcare that fits your life
           </h1>
 
-          <p class="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
-            12 outpatient clinics across the US and UK offering same-day appointments,
-            extended hours, and bilingual care — so you can get the attention you need,
-            when you need it.
+          <p
+            class="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg"
+          >
+            12 outpatient clinics across the US and UK offering same-day
+            appointments, extended hours, and bilingual care — so you can get
+            the attention you need, when you need it.
           </p>
 
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="application.html"
-              class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-navy px-6 py-3 font-bold text-white shadow-lg transition hover:bg-slate-800">
+            <a
+              href="application.html"
+              class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-navy px-6 py-3 font-bold text-white shadow-lg transition hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+            >
               Request an appointment
-              <i data-lucide="arrow-right" class="size-5" aria-hidden="true"></i>
+              <i
+                data-lucide="arrow-right"
+                class="size-5"
+                aria-hidden="true"
+              ></i>
             </a>
 
-            <a href="locations.html"
-              class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-slate-200 bg-white px-6 py-3 font-bold text-navy transition hover:border-teal">
-              <i data-lucide="map-pin" class="size-5 text-teal" aria-hidden="true"></i>
+            <a
+              href="locations.html"
+              class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-slate-200 bg-white px-6 py-3 font-bold text-navy transition hover:border-teal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+            >
+              <i
+                data-lucide="map-pin"
+                class="size-5 text-teal"
+                aria-hidden="true"
+              ></i>
               Explore 12 locations
             </a>
           </div>
         </div>
 
         <div class="relative overflow-hidden rounded-lg shadow-xl">
-          <img src="public/images/home-hero.jpg" alt="HealthCore doctor speaking with an older patient in a clinic"
-            class="aspect-[4/3] w-full object-cover" />
+          <img
+            src="public/images/home-hero.jpg"
+            alt="HealthCore doctor speaking with an older patient in a clinic"
+            class="aspect-[4/3] w-full object-cover"
+          />
 
           <!-- Accreditation panel -->
           <article
-            class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 rounded-lg bg-white p-3 shadow-lg sm:bottom-4 sm:left-4 sm:right-4 sm:p-4">
+            class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 rounded-lg bg-white p-3 shadow-lg sm:bottom-4 sm:left-4 sm:right-4 sm:p-4"
+          >
             <div class="flex min-w-0 items-center gap-3">
-              <span class="grid size-10 shrink-0 place-items-center rounded-full bg-navy text-white sm:size-12">
-                <i data-lucide="badge-check" class="size-5 sm:size-6" aria-hidden="true"></i>
+              <span
+                class="grid size-10 shrink-0 place-items-center rounded-full bg-navy text-white sm:size-12"
+              >
+                <i
+                  data-lucide="badge-check"
+                  class="size-5 sm:size-6"
+                  aria-hidden="true"
+                ></i>
               </span>
 
               <div class="min-w-0">
@@ -93,12 +173,35 @@
               </div>
             </div>
 
-            <div class="hidden shrink-0 items-center gap-1 text-teal sm:flex" aria-label="Five-star patient rating">
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
+            <div
+              class="hidden shrink-0 items-center gap-1 text-teal sm:flex"
+              aria-label="Five-star patient rating"
+            >
+              <i
+                data-lucide="star"
+                class="size-4 fill-current"
+                aria-hidden="true"
+              ></i>
+              <i
+                data-lucide="star"
+                class="size-4 fill-current"
+                aria-hidden="true"
+              ></i>
+              <i
+                data-lucide="star"
+                class="size-4 fill-current"
+                aria-hidden="true"
+              ></i>
+              <i
+                data-lucide="star"
+                class="size-4 fill-current"
+                aria-hidden="true"
+              ></i>
+              <i
+                data-lucide="star"
+                class="size-4 fill-current"
+                aria-hidden="true"
+              ></i>
             </div>
           </article>
         </div>
@@ -109,32 +212,62 @@
     <section class="py-20" aria-labelledby="benefits-heading">
       <div class="mx-auto max-w-7xl px-5 md:px-8">
         <div class="max-w-2xl">
-          <p class="font-bold uppercase text-teal">Care built around you</p>
-          <h2 id="benefits-heading" class="mt-3 text-3xl font-extrabold text-navy">
+          <p class="font-bold uppercase text-teal">
+            Care built around you
+          </p>
+
+          <h2
+            id="benefits-heading"
+            class="mt-3 text-3xl font-extrabold text-navy"
+          >
             Quality care without unnecessary delays
           </h2>
         </div>
 
         <div class="mt-10 grid gap-6 md:grid-cols-3">
           <article class="border-t-4 border-teal bg-cloud p-7">
-            <i data-lucide="clock-3" class="size-9 text-teal" aria-hidden="true"></i>
-            <h3 class="mt-5 text-xl font-bold text-navy">Same-Day Care</h3>
+            <i
+              data-lucide="clock-3"
+              class="size-9 text-teal"
+              aria-hidden="true"
+            ></i>
+
+            <h3 class="mt-5 text-xl font-bold text-navy">
+              Same-Day Care
+            </h3>
+
             <p class="mt-3 leading-7">
               Access urgent outpatient appointments without waiting weeks for care.
             </p>
           </article>
 
           <article class="border-t-4 border-mint bg-cloud p-7">
-            <i data-lucide="moon" class="size-9 text-teal" aria-hidden="true"></i>
-            <h3 class="mt-5 text-xl font-bold text-navy">Extended Hours</h3>
+            <i
+              data-lucide="moon"
+              class="size-9 text-teal"
+              aria-hidden="true"
+            ></i>
+
+            <h3 class="mt-5 text-xl font-bold text-navy">
+              Extended Hours
+            </h3>
+
             <p class="mt-3 leading-7">
               Morning and evening appointments that work around your schedule.
             </p>
           </article>
 
           <article class="border-t-4 border-navy bg-cloud p-7">
-            <i data-lucide="languages" class="size-9 text-teal" aria-hidden="true"></i>
-            <h3 class="mt-5 text-xl font-bold text-navy">Bilingual Care</h3>
+            <i
+              data-lucide="languages"
+              class="size-9 text-teal"
+              aria-hidden="true"
+            ></i>
+
+            <h3 class="mt-5 text-xl font-bold text-navy">
+              Bilingual Care
+            </h3>
+
             <p class="mt-3 leading-7">
               Clear, welcoming healthcare services available in English and Spanish.
             </p>
@@ -144,21 +277,36 @@
     </section>
 
     <!-- Contact CTA -->
-    <section class="bg-navy py-16 text-white" aria-labelledby="contact-heading">
-      <div class="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-5 md:px-8 lg:flex-row lg:items-center">
+    <section
+      class="bg-navy py-16 text-white"
+      aria-labelledby="contact-heading"
+    >
+      <div
+        class="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-5 md:px-8 lg:flex-row lg:items-center"
+      >
         <div>
-          <h2 id="contact-heading" class="text-3xl font-extrabold">
+          <h2
+            id="contact-heading"
+            class="text-3xl font-extrabold"
+          >
             Ready to speak with our care team?
           </h2>
+
           <p class="mt-3 max-w-2xl text-slate-200">
             Request an appointment or contact HealthCore for help choosing a clinic.
           </p>
         </div>
 
-        <a href="application.html"
-          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-white px-6 py-3 font-bold text-navy">
+        <a
+          href="application.html"
+          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-white px-6 py-3 font-bold text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+        >
           Request an appointment
-          <i data-lucide="calendar-plus" class="size-5" aria-hidden="true"></i>
+          <i
+            data-lucide="calendar-plus"
+            class="size-5"
+            aria-hidden="true"
+          ></i>
         </a>
       </div>
     </section>
@@ -169,5 +317,4 @@
 
   <script src="./js/components.js"></script>
 </body>
-
 </html>
