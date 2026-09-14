@@ -38,6 +38,7 @@ function applyLanguage(language, header) {
         button.classList.toggle("text-slate-600", !selected);
     });
     updateHeaderMenuLabel();
+    document.dispatchEvent(new CustomEvent("languagechange", { detail: { language } }));
 }
 
 // Update the menu button's screen-reader label for its state and selected language.

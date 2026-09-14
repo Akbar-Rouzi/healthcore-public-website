@@ -1,12 +1,17 @@
+import { getTranslationWithFallback } from './language/translation-utils.js';
+
 // Keep every clinic in the HTML so the directory also works without JavaScript.
 const regionFilters = document.querySelectorAll('[data-region-filter]');
 const clinicCards = document.querySelectorAll('[data-region]');
 const clinicStatus = document.getElementById('clinic-status');
+let selectedRegion = 'all';
+let visibleCount = clinicCards.length;
 
 regionFilters.forEach((button) => {
   button.addEventListener('click', () => {
     const region = button.dataset.regionFilter;
-    let visibleCount = 0;
+    selectedRegion = region;
+    visibleCount = 0;
 
     clinicCards.forEach((card) => {
       const visible = region === 'all' || card.dataset.region === region;
@@ -24,8 +29,17 @@ regionFilters.forEach((button) => {
       ['bg-[#eef3ff]', 'text-slate-600', 'hover:bg-blue-100'].forEach((name) => filter.classList.toggle(name, !selected));
     });
 
-    clinicStatus.textContent = region === 'all'
-      ? `Showing all ${visibleCount} clinics.`
-      : `Showing ${visibleCount} ${visibleCount === 1 ? 'clinic' : 'clinics'} in ${region}.`;
+    updateClinicStatus();
   });
 });
+
+// Refresh the result announcement when filtering or changing language.
+function updateClinicStatus() {
+  const key = selectedRegion === 'all' ? 'all' : visibleCount === 1 ? 'one' : 'many';
+  clinicStatus.textContent = getTranslationWithFallback(
+    `locations.status.${key}`, document.documentElement.lang,
+  ).replace('{count}', String(visibleCount)).replace('{region}', selectedRegion);
+}
+
+document.addEventListener('languagechange', updateClinicStatus);
+updateClinicStatus();
