@@ -1,6 +1,6 @@
 <header class="border-b border-slate-200 bg-white/95 backdrop-blur">
   <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-5 lg:px-8">
-    <a href="index.html" class="flex shrink-0 items-center gap-2" aria-label="HealthCore home">
+    <a href="index.html" class="flex shrink-0 items-center gap-2" data-i18n-aria-label="header.header.home">
       <span class="grid size-8 shrink-0 place-items-center rounded-md bg-navy text-white sm:size-9">
         <i data-lucide="plus" class="size-5 stroke-[3]" aria-hidden="true"></i>
       </span>
@@ -13,32 +13,32 @@
         <span
           class="mt-1 whitespace-nowrap text-[6px] font-bold uppercase tracking-wide text-slate-500 sm:text-[7px]"
         >
-          Outpatient Healthcare
+          <span data-i18n="header.header.tagline"></span>
         </span>
       </span>
     </a>
 
-    <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary navigation">
+    <nav class="hidden items-center gap-8 lg:flex" data-i18n-aria-label="header.nav.primary">
       <a href="index.html" data-nav-link class="py-2 font-semibold hover:text-navy">
-        Home
+        <span data-i18n="header.nav.home"></span>
       </a>
       <a href="services.html" data-nav-link class="py-2 font-semibold hover:text-navy">
-        Services
+        <span data-i18n="header.nav.services"></span>
       </a>
       <a href="locations.html" data-nav-link class="py-2 font-semibold hover:text-navy">
-        Locations
+        <span data-i18n="header.nav.locations"></span>
       </a>
       <a href="contact.html" data-nav-link class="py-2 font-semibold hover:text-navy">
-        Contact
+        <span data-i18n="header.nav.contact"></span>
       </a>
     </nav>
 
     <div class="flex items-center gap-2 sm:gap-3">
-      <div class="flex shrink-0 rounded-md bg-[#eef3ff] p-1" role="group" aria-label="Language selection">
-        <button type="button" class="min-h-8 rounded bg-navy px-2 text-xs font-bold text-white sm:px-3" aria-label="English" aria-pressed="true">
+      <div class="flex shrink-0 rounded-md bg-[#eef3ff] p-1" role="group" data-i18n-aria-label="header.language.selection">
+        <button type="button" class="min-h-8 rounded bg-navy px-2 text-xs font-bold text-white sm:px-3" data-i18n-aria-label="header.language.english" data-language="en" aria-pressed="true">
           EN
         </button>
-        <button type="button" class="min-h-8 rounded px-2 text-xs font-bold text-slate-600 sm:px-3" aria-label="Spanish" aria-pressed="false">
+        <button type="button" class="min-h-8 rounded px-2 text-xs font-bold text-slate-600 sm:px-3" data-i18n-aria-label="header.language.spanish" data-language="es" aria-pressed="false">
           ES
         </button>
       </div>
@@ -46,7 +46,7 @@
       <a
         href="application.html"
         class="grid size-10 place-items-center rounded-full bg-navy text-white"
-        aria-label="Open patient application"
+        data-i18n-aria-label="header.patient.openForm"
       >
         <i data-lucide="user-round" class="size-5" aria-hidden="true"></i>
       </a>
@@ -55,7 +55,7 @@
         type="button"
         id="menu-button"
         class="grid size-10 place-items-center rounded-md text-navy hover:bg-slate-100 lg:hidden"
-        aria-label="Open navigation menu"
+        data-i18n-aria-label="header.menu.open"
         aria-controls="mobile-menu"
         aria-expanded="false"
       >
@@ -67,20 +67,20 @@
   <nav
     id="mobile-menu"
     class="hidden border-t border-slate-200 bg-white px-4 pb-4 pt-3 lg:hidden"
-    aria-label="Mobile and tablet navigation"
+    data-i18n-aria-label="header.nav.mobile"
   >
     <div class="mx-auto flex max-w-7xl flex-col gap-1">
       <a href="index.html" data-nav-link class="rounded-md px-3 py-3 font-semibold hover:bg-cloud">
-        Home
+        <span data-i18n="header.nav.home"></span>
       </a>
       <a href="services.html" data-nav-link class="rounded-md px-3 py-3 font-medium hover:bg-cloud">
-        Services
+        <span data-i18n="header.nav.services"></span>
       </a>
       <a href="locations.html" data-nav-link class="rounded-md px-3 py-3 font-medium hover:bg-cloud">
-        Locations
+        <span data-i18n="header.nav.locations"></span>
       </a>
       <a href="contact.html" data-nav-link class="rounded-md px-3 py-3 font-medium hover:bg-cloud">
-        Contact
+        <span data-i18n="header.nav.contact"></span>
       </a>
     </div>
   </nav>

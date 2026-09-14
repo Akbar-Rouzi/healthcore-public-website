@@ -84,6 +84,9 @@ website/
 
 - `components/header.html` and `components/footer.html` contain the reusable site layout.
 - `js/components.js` loads the shared components and controls navigation behavior.
+- `js/language/language.js` manages language selection, saved preferences, and translated menu labels.
+- `js/language/translation-dictionary.js` contains the English/Spanish key-value dictionary.
+- `js/language/translation-utils.js` contains the `getTranslationWithFallback()` and `applyTranslations()` helpers.
 - `js/tailwind-config.js` contains the shared Tailwind theme configuration.
 - `js/main.js` is reserved for future page-specific behavior.
 - `js/locations.js` filters clinic cards by region and announces the visible result count.
