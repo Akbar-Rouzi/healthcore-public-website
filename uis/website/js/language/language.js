@@ -20,13 +20,16 @@ export function initializeSharedLanguage() {
     });
 }
 
-// Translate the header and footer and highlight the selected EN/ES button.
+// Translate marked content and highlight the selected EN/ES button.
 function applyLanguage(language, header) {
-    // Mark only the translated components with the selected language.
+    // Only fully translated pages change the document language.
+    if (document.documentElement.hasAttribute("data-translatable-page")) {
+        document.documentElement.lang = language;
+    }
     document.querySelectorAll("#header header, #footer footer").forEach((component) => {
         component.lang = language;
-        languageCatalog.applyTranslations(component, language);
     });
+    languageCatalog.applyTranslations(document, language);
     header.querySelectorAll("[data-language]").forEach((button) => {
         const selected = button.dataset.language === language;
         button.setAttribute("aria-pressed", String(selected));

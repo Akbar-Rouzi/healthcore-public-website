@@ -5,7 +5,7 @@ export function applyTranslations(component, language) {
     component.querySelectorAll("[data-i18n]").forEach((element) => {
         element.textContent = getTranslationWithFallback(element.dataset.i18n, language);
     });
-    for (const attribute of ["aria-label", "placeholder", "title"]) {
+    for (const attribute of ["aria-label", "placeholder", "title", "alt", "content"]) {
         component.querySelectorAll(`[data-i18n-${attribute}]`).forEach((element) => {
             element.setAttribute(attribute, getTranslationWithFallback(element.getAttribute(`data-i18n-${attribute}`), language));
         });
