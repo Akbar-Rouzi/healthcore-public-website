@@ -51,30 +51,119 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "MedicalOrganization",
-      "name": "HealthCore",
-      "description": "Outpatient healthcare network offering primary care, specialist consultations, chronic disease management, and preventive health programmes.",
-      "url": "https://www.healthcore.com",
-      "foundingDate": "2011",
-      "logo": "https://www.healthcore.com/logo.png",
-      "availableLanguage": ["English", "Spanish"],
-      "areaServed": ["US", "GB"],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Austin",
-        "addressRegion": "Texas",
-        "addressCountry": "US"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+1-512-340-8800",
-        "contactType": "patient services",
-        "availableLanguage": ["English", "Spanish"]
-      },
-      "sameAs": [
-        "https://linkedin.com/company/healthcore",
-        "https://facebook.com/healthcore",
-        "https://instagram.com/healthcore"
+      "@graph": [
+        {
+          "@type": "MedicalOrganization",
+          "name": "HealthCore",
+          "description": "Outpatient healthcare network offering primary care, specialist consultations, chronic disease management, and preventive health programmes.",
+          "url": "https://www.healthcore.com",
+          "foundingDate": "2011",
+          "logo": "https://www.healthcore.com/logo.png",
+          "availableLanguage": [
+            "English",
+            "Spanish"
+          ],
+          "areaServed": [
+            "US",
+            "GB"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "Texas",
+            "addressCountry": "US"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-512-340-8800",
+            "contactType": "patient services",
+            "availableLanguage": [
+              "English",
+              "Spanish"
+            ]
+          },
+          "sameAs": [
+            "https://linkedin.com/company/healthcore",
+            "https://facebook.com/healthcore",
+            "https://instagram.com/healthcore"
+          ],
+          "@id": "https://www.healthcore.com/#organization"
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-austin-central",
+          "name": "HealthCore Austin Central",
+          "telephone": "+1-512-340-8800",
+          "openingHours": [
+            "Mo-Fr 07:00-20:00",
+            "Sa 09:00-15:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-austin-north",
+          "name": "HealthCore Austin North",
+          "telephone": "+1-512-340-8810",
+          "openingHours": [
+            "Mo-Fr 08:00-19:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-san-antonio",
+          "name": "HealthCore San Antonio",
+          "telephone": "+1-210-720-4400",
+          "openingHours": [
+            "Mo-Fr 08:00-18:00",
+            "Sa 09:00-13:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-miami",
+          "name": "HealthCore Miami",
+          "telephone": "+1-305-510-7700",
+          "openingHours": [
+            "Mo-Fr 07:00-20:00",
+            "Sa 09:00-16:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-orlando",
+          "name": "HealthCore Orlando",
+          "telephone": "+1-407-892-6600",
+          "openingHours": [
+            "Mo-Fr 08:00-18:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-atlanta",
+          "name": "HealthCore Atlanta",
+          "telephone": "+1-404-330-9900",
+          "openingHours": [
+            "Mo-Fr 08:00-19:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        }
       ]
     }
   </script>

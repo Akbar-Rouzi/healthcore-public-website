@@ -7,7 +7,7 @@ This folder contains HealthCore's public-facing website for patients and visitor
 The current milestone includes:
 
 - A responsive home page for desktop, tablet, and mobile
-- Home page canonical URL, Open Graph metadata, and Schema.org `MedicalOrganization` structured data
+- Home page canonical URL, Open Graph metadata, and Schema.org structured data for HealthCore and its six listed US clinics
 - A shared header and footer loaded into each page with vanilla JavaScript, using the Home UI/UX reference consistently across all four pages
 - A hamburger navigation menu for mobile and tablet
 - Active navigation styling for standard `.html` and clean URLs
@@ -39,7 +39,7 @@ Use the local HTTP server described below; no build command is needed. To change
 
 ## Home page metadata and accessibility
 
-[`index.html`](./index.html) includes a canonical URL and Open Graph title, description, page type, URL, and image metadata in its `<head>`. A JSON-LD script (`application/ld+json`) describes HealthCore as a Schema.org `MedicalOrganization`, including its founding date, logo, supported languages, service areas, Austin address, patient services contact, and social profiles.
+[`index.html`](./index.html) includes a canonical URL and Open Graph title, description, page type, URL, and image metadata in its `<head>`. A JSON-LD script (`application/ld+json`) describes HealthCore as a Schema.org `MedicalOrganization`, including its founding date, logo, supported languages, service areas, Austin address, patient services contact, and social profiles. The same JSON-LD `@graph` contains six `MedicalClinic` entries with the clinic names, telephone numbers, and opening hours from the context document. Each clinic references HealthCore through `parentOrganization` and the organization's shared `@id`.
 
 Keep these metadata values in sync when organization details or public URLs change. The JSON-LD uses plain URL strings and can be edited directly in `index.html` without a build step.
 
