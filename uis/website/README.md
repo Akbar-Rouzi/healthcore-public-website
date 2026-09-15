@@ -11,8 +11,8 @@ The current milestone includes:
 - A shared header and footer loaded into each page with vanilla JavaScript, using the Home UI/UX reference consistently across all four pages
 - A hamburger navigation menu for mobile and tablet
 - Active navigation styling for standard `.html` and clean URLs
-- A hero section with appointment and location calls to action
-- Key outpatient care benefits
+- A hero section with appointment and location calls to action and a floating accreditation panel
+- Three outpatient service cards and a four-card Why HealthCore section
 - A contact call to action and professional footer
 - A responsive Services page with three specialized medical practice cards and a Why HealthCore section
 - A responsive Locations directory with six US clinic cards, region filters, and phone links
@@ -59,6 +59,8 @@ website/
 │   ├── header.html
 │   └── footer.html
 ├── css/
+│   ├── home.css
+│   └── page-loading.css
 ├── js/
 │   ├── components.js
 │   ├── locations.js
@@ -139,17 +141,19 @@ The screenshots in [`public/ui-ux/home`](./public/ui-ux/home/) are the visual re
 
 ![HealthCore home page on desktop](./public/ui-ux/home/home_desktop.PNG)
 
-- The top header displays the compact HealthCore logo, centered navigation links and account icon.
-- The hero uses a two-column layout: headline, description, calls to action, and benefits on the left; patient photography and accreditation details on the right.
-- The footer places company information on the left and contact and social links on the right.
+- The shared header displays the compact HealthCore logo, centered navigation links, and EN/ES language controls.
+- The hero uses two columns: headline, description, and calls to action on the left; patient photography and a floating accreditation panel on the right. The panel reads Founded 2011 / Trusted Outpatient Excellence.
+- Three bordered service cards introduce primary care, specialist consultations, and preventive health, followed by four pale blue Why HealthCore cards in two columns.
+- The navy closing panel includes location and patient enquiry links beside the care-team introduction.
+- The shared footer places the brand and email on the left, social links in the middle, and copyright on the right.
 
 #### Tablet
 
 ![HealthCore home page on tablet](./public/ui-ux/home/home_tablet.PNG)
 
 - The hero changes to a single-column layout, with the text and actions above the image.
-- The main navigation moves into a hamburger menu while the logo and account icon remain visible.
-- Benefit items remain in a three-column row beneath the hero image.
+- The main navigation moves into a hamburger menu while the logo and EN/ES controls remain visible.
+- Services remain in three columns from 640px; Why HealthCore uses two columns. The closing panel places its actions beneath the introduction.
 
 #### Mobile
 
@@ -157,7 +161,12 @@ The screenshots in [`public/ui-ux/home`](./public/ui-ux/home/) are the visual re
 
 - Content is stacked vertically for a narrow viewport, with readable spacing and no horizontal scrolling.
 - Both calls to action become full-width controls for easier touch interaction.
-- The hero image follows the text and actions, while the accreditation panel remains overlaid near the bottom of the image.
+- The hero image follows the text and actions, with the accreditation panel overlapping its lower edge.
+- Service and Why HealthCore cards stack into single columns below 640px.
+
+Home-specific layout rules are in `css/home.css`. New Home wording is in the English/Spanish translation dictionary; service titles and bullet points reuse the Services translations. The existing hero photograph and shared header/footer are retained.
+
+The shared header height and logo sizing follow the updated Home references. Home browser checks passed at 1600, 1280, 960, 768, 640, 487, 390, and 320px in English and Spanish without horizontal overflow. Desktop, tablet, and mobile screenshots were reviewed; the enquiry link preserves the selected language. Shared header and mobile menu checks also passed on the other four pages at 1280, 768, 390, and 320px.
 
 #### Mobile and tablet menu
 
