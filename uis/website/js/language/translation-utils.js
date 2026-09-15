@@ -14,12 +14,20 @@ export function applyTranslations(component, language) {
 
 // Look up one translation, falling back to English or the key if it is missing.
 export function getTranslationWithFallback(key, language = "en") {
-    // The first dot separates the group from its key: header.nav.home → header["nav.home"].
-    const separator = key.indexOf(".");
-    if (separator === -1) return key;
-    const group = key.slice(0, separator);
-    const translationKey = key.slice(separator + 1);
-    return translationDictionary[language]?.[group]?.[translationKey]
-        ?? translationDictionary.en[group]?.[translationKey]
+    return findTranslation(translationDictionary[language], key)
+        ?? findTranslation(translationDictionary.en, key)
         ?? key;
+}
+
+// Support both dotted keys ("nav.home") and nested objects (application.validation).
+function findTranslation(dictionary, key) {
+    if (!dictionary || typeof dictionary !== "object") return undefined;
+    if (Object.hasOwn(dictionary, key) && typeof dictionary[key] === "string") {
+        return dictionary[key];
+    }
+    const separator = key.indexOf(".");
+    if (separator === -1) return undefined;
+    const group = key.slice(0, separator);
+    if (!Object.hasOwn(dictionary, group)) return undefined;
+    return findTranslation(dictionary[group], key.slice(separator + 1));
 }

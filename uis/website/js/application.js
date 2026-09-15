@@ -1,3 +1,6 @@
+import { enquiryValidation } from "./validation.js";
+import { getTranslationWithFallback } from "./language/translation-utils.js";
+
 const enquiryForm = document.getElementById("patient-enquiry");
 const insuranceDetails = document.getElementById("insurance-details");
 const returningDetails = document.getElementById("returning-patient-details");
@@ -76,7 +79,10 @@ function renderValidation() {
   warning.hidden = !warning.textContent;
   const count = Object.keys(result.errors).length;
   summary.hidden = !submitted || count === 0;
-  summary.textContent = submitted && count ? `Please correct ${count} ${count === 1 ? "field" : "fields"} below before submitting your enquiry.` : "";
+  summary.textContent = submitted && count ? getTranslationWithFallback(
+    `application.validation.${count === 1 ? "summaryOne" : "summaryMany"}`,
+    document.documentElement.lang,
+  ).replace("{count}", String(count)) : "";
   concernCount.textContent = healthConcern.value.length;
   document.getElementById("concern-counter").classList.toggle("text-red-700", healthConcern.value.length > 500);
   return result;
@@ -133,6 +139,8 @@ enquiryForm.addEventListener("submit", (event) => {
   showSuccessMessage();
 });
 window.addEventListener("focus", updateDateBounds);
+// Refresh visible errors and warnings without resetting the patient's input.
+document.addEventListener("languagechange", renderValidation);
 updateDateBounds();
 updateConditionalFields();
 renderValidation();
