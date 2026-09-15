@@ -101,7 +101,7 @@ async function initializeComponents() {
         ]);
 
         if (document.getElementById("patient-enquiry")) {
-            await import("./application.js");
+            await import("./application/application.js");
         }
         if (document.getElementById("clinic-status")) {
             await import("./locations.js");

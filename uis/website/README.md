@@ -61,10 +61,11 @@ website/
 ├── css/
 ├── js/
 │   ├── components.js
-│   ├── main.js
 │   ├── locations.js
 │   ├── tailwind-config.js
-│   └── validation.js
+│   └── application/
+│       ├── application.js
+│       └── validation.js
 └── public/
     ├── images/
     │   ├── home-hero.jpg
@@ -96,9 +97,8 @@ website/
 - `js/language/translation-dictionary.js` contains the English/Spanish key-value dictionary.
 - `js/language/translation-utils.js` contains the `getTranslationWithFallback()` and `applyTranslations()` helpers.
 - `js/tailwind-config.js` contains the shared Tailwind theme configuration.
-- `js/main.js` is reserved for future page-specific behavior.
 - `js/locations.js` filters clinic cards by region and announces the visible result count.
-- `application.html` contains the patient enquiry form, styled with Tailwind utility classes directly in the HTML. `js/application.js` handles conditional fields, inline errors, the live character counter, and clinic preselection. `js/validation.js` contains the field rules, calendar calculations, and clinic-hours checks.
+- `application.html` contains the patient enquiry form, styled with Tailwind utility classes directly in the HTML. `js/application/application.js` handles conditional fields, inline errors, the live character counter, and clinic preselection. `js/application/validation.js` contains the field rules, calendar calculations, and clinic-hours checks.
 - Locations page styling uses Tailwind utility classes directly in `locations.html`; the shared header and footer are used without page-specific overrides.
 - Contact page styling uses Tailwind utility classes directly in `contact.html`; the shared header and footer are used without page-specific overrides.
 - `public/ui-ux/` contains the responsive UI/UX references for each implemented page.

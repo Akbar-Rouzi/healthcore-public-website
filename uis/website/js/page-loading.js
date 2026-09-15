@@ -1,3 +1,10 @@
+/*
+ * Controls the loading screen while shared components and translations initialize.
+ * Restores the saved English/Spanish preference for loading and error messages.
+ * Reveals the page on "pageready"; shows an error and Retry link on "pageerror"
+ * or after 15 seconds. Runs independently of translation modules so failures in
+ * those modules can still be reported. Page content is translated elsewhere.
+ */
 (() => {
     const root = document.documentElement;
     let language = "en";

@@ -1,4 +1,4 @@
-import { getTranslationWithFallback } from "./language/translation-utils.js";
+import { getTranslationWithFallback } from "../language/translation-utils.js";
 
 // Calendar-only calculations use UTC to avoid daylight-saving time shifts.
 export const enquiryValidation = (() => {

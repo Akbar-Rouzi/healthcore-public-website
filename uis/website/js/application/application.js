@@ -1,5 +1,5 @@
 import { enquiryValidation } from "./validation.js";
-import { getTranslationWithFallback } from "./language/translation-utils.js";
+import { getTranslationWithFallback } from "../language/translation-utils.js";
 
 const enquiryForm = document.getElementById("patient-enquiry");
 const insuranceDetails = document.getElementById("insurance-details");
