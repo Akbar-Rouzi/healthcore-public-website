@@ -100,6 +100,13 @@ async function initializeComponents() {
             loadComponent("#footer", "./components/footer.html"),
         ]);
 
+        if (document.getElementById("patient-enquiry")) {
+            await import("./application.js");
+        }
+        if (document.getElementById("clinic-status")) {
+            await import("./locations.js");
+        }
+
         initializeSharedLanguage();
         initializeMobileMenu();
         highlightCurrentPage();
@@ -107,8 +114,10 @@ async function initializeComponents() {
         if (window.lucide) {
             lucide.createIcons();
         }
+        document.dispatchEvent(new Event("pageready"));
     } catch (error) {
         console.error("Unable to initialize shared components:", error);
+        document.dispatchEvent(new Event("pageerror"));
     }
 }
 

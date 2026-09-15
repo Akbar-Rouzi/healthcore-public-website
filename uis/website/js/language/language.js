@@ -3,7 +3,7 @@ import * as languageCatalog from "./translation-utils.js";
 // Restore the saved language and set up the EN/ES button click listeners.
 export function initializeSharedLanguage() {
     const header = document.querySelector("#header header");
-    if (!header) return;
+    if (!header) throw new Error("The shared header is missing.");
 
     let savedLanguage = "en";
     try {

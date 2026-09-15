@@ -29,6 +29,14 @@ The patient enquiry form collects contact details, appointment preferences, pati
 
 No build step is currently required.
 
+## Translation loading
+
+All five pages use English and Spanish translations from `js/language/translation-dictionary.js`. Translated elements and attributes keep their `data-i18n` keys in HTML; their wording is filled by JavaScript. Page titles use `HealthCore` until translation finishes.
+
+The page starts hidden behind a loading message in the saved language, defaulting to English when no supported preference is available. `js/components.js` loads the header, footer, and any page-specific controls, applies the saved language, and then reveals the page. `js/page-loading.js` independently shows an error and a Retry link in the selected language if initialization fails or takes more than 15 seconds. Late successful initialization can still reveal the page. Browsers with JavaScript disabled show a bilingual enable-JavaScript message.
+
+Use the local HTTP server described below; no build command is needed. To change wording, edit the dictionary. Keep the small bilingual loading, retry, and JavaScript-disabled messages independent of the dictionary so they remain available when translation files cannot load. Translated metadata also requires JavaScript; crawlers that do not execute it will see the generic title and empty translated descriptions.
+
 ## Home page metadata and accessibility
 
 [`index.html`](./index.html) includes a canonical URL and Open Graph title, description, page type, URL, and image metadata in its `<head>`. A JSON-LD script (`application/ld+json`) describes HealthCore as a Schema.org `MedicalOrganization`, including its founding date, logo, supported languages, service areas, Austin address, patient services contact, and social profiles.
@@ -198,7 +206,7 @@ These screenshots describe the target design; they do not establish an exact vis
 
 ### Locations
 
-The screenshots in [`public/ui-ux/locations`](./public/ui-ux/locations/) guide the US clinic directory. A pale blue introduction presents the clinic count and bilingual support, followed by region filters, six clinic cards, and an interpreter support panel. Clinic names, hours, and phone numbers follow the supplied references. Page content is English-only; Spanish labels are omitted and the phone support heading is translated. The shared header includes the EN/ES language control from the Home reference. Translation behavior is not implemented.
+The screenshots in [`public/ui-ux/locations`](./public/ui-ux/locations/) guide the US clinic directory. A pale blue introduction presents the clinic count and bilingual support, followed by region filters, six clinic cards, and an interpreter support panel. Clinic names, hours, and phone numbers follow the supplied references. Page content, clinic hours, action labels, and filter result announcements support English and Spanish. The shared header includes the EN/ES language control from the Home reference.
 
 #### Desktop
 
@@ -229,7 +237,7 @@ All Regions restores all six cards; Texas, Florida, and Georgia display three, t
 
 ### Contact
 
-The screenshots in [`public/ui-ux/contact`](./public/ui-ux/contact/) guide the Contact page. Soft blue background accents frame four white contact cards, a navy appointment panel, operational hours, and a separate emergency information section. Content remains English-only, using the shared header with one mobile menu and the EN/ES language control.
+The screenshots in [`public/ui-ux/contact`](./public/ui-ux/contact/) guide the Contact page. Soft blue background accents frame four white contact cards, a navy appointment panel, operational hours, and a separate emergency information section. Content supports English and Spanish, using the shared header with one mobile menu and the EN/ES language control.
 
 #### Desktop
 

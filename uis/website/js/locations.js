@@ -1,6 +1,6 @@
 import { getTranslationWithFallback } from './language/translation-utils.js';
 
-// Keep every clinic in the HTML so the directory also works without JavaScript.
+// Filter the existing clinic elements without fetching another directory.
 const regionFilters = document.querySelectorAll('[data-region-filter]');
 const clinicCards = document.querySelectorAll('[data-region]');
 const clinicStatus = document.getElementById('clinic-status');
