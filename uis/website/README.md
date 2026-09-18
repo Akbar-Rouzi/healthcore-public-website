@@ -8,7 +8,8 @@ The current milestone includes:
 
 - A responsive home page for desktop, tablet, and mobile
 - Home page canonical URL, Open Graph metadata, and Schema.org structured data for HealthCore and its six listed US clinics
-- A shared header and footer loaded into each page with vanilla JavaScript, using the Home UI/UX reference consistently across all four pages
+- A shared header and footer loaded into each page with vanilla JavaScript, using the Home UI/UX reference consistently across all five pages
+- A bilingual keyboard skip link that moves focus directly to the main content
 - A hamburger navigation menu for mobile and tablet
 - Active navigation styling for standard `.html` and clean URLs
 - A hero section with appointment and location calls to action and a floating accreditation panel
@@ -292,8 +293,18 @@ Chrome checks passed at 1280, 1024, 768, 640, 390, 375, and 320px with no horizo
 
 Names accept 2–50 Unicode letters, including accented letters. Date of birth accepts ages 0–120 inclusive; Paediatric Care requires an age under 18. Phone numbers require a leading `+`, a nonzero country-code prefix, and 7–15 digits, with optional spaces or hyphens. Required dropdowns accept only the specified options.
 
-Preferred dates start at the next Monday–Friday business day and end 60 calendar days from the user's local date. Public holidays are not excluded. Calendar arithmetic avoids daylight-saving shifts. An evening selection at a clinic closing at 6pm or 7pm shows a nonblocking warning; evening selections on dates when the clinic is closed or closes by 5pm are invalid. Clinic hours mirror the Locations page.
+Preferred dates start at the next Monday–Friday business day and end 60 calendar days from the user's local date. Public holidays are not excluded. Calendar arithmetic avoids daylight-saving shifts. All time preferences reject Sundays and Saturdays when the selected clinic is closed; Saturday requests remain valid for clinics with Saturday hours. Changing the clinic revalidates the selected date. An evening selection at a clinic closing at 6pm or 7pm shows a nonblocking warning; evening selections on dates when the clinic is closed or closes by 5pm are invalid. Clinic hours mirror the Locations page.
 
 Insurance details are required only when Yes is selected (provider: up to 100 characters; member ID: 6–20 alphanumeric characters). Patient ID is optional and validated only for returning patients. Hidden fields are disabled, excluded from form data, and have their errors cleared. Health concern requires 20–500 characters with a live counter and remaining-character error. Contact consent is required.
 
 Browser validation checks passed for exact inline messages, error associations and clearing, first-invalid focus, conditional fields, Paediatric Care dependencies, evening warnings, character limits, consent, and the simulated confirmation. Error layouts were checked at 1280, 1024, 768, 640, 390, 375, and 320px without horizontal overflow or JavaScript exceptions.
+
+### Repeatable validation checks
+
+Run the dependency-free validation regression tests with Node.js 24 or newer from the repository root:
+
+```powershell
+node --test --test-isolation=none uis/website/tests/validation.test.mjs
+```
+
+These cover valid enquiries, closed clinic dates, Saturday schedules, date boundaries, evening availability, paediatric eligibility, conditional fields, and consent. See [the application review](./REVIEW.md) for the broader review and remaining limitations.

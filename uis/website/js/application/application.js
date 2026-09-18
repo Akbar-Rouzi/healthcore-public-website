@@ -96,6 +96,7 @@ function handleEdit(event) {
   // Show dependent errors as soon as a complete combination is selected.
   if (["service_type", "date_of_birth"].includes(event.target.name) && enquiryForm.elements.service_type.value && enquiryForm.elements.date_of_birth.value) touched.add("service_type");
   if (["preferred_time", "preferred_date", "preferred_clinic"].includes(event.target.name) && enquiryForm.elements.preferred_time.value) touched.add("preferred_time");
+  if (["preferred_date", "preferred_clinic"].includes(event.target.name) && enquiryForm.elements.preferred_date.value && enquiryForm.elements.preferred_clinic.value) touched.add("preferred_date");
   renderValidation();
 }
 enquiryForm.addEventListener("input", handleEdit);

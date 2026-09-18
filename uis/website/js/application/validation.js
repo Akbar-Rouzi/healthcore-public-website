@@ -78,10 +78,14 @@ export const enquiryValidation = (() => {
     return null;
   }
 
-  function validatePreferredDate(value, today = todayString()) {
+  function validatePreferredDate(value, today = todayString(), clinic = "") {
     const date = value.trim();
     const bounds = dateBounds(today);
     if (!parseDate(date) || date < bounds.minimum || date > bounds.maximum) return message("preferred_date");
+    const day = parseDate(date).getUTCDay();
+    if (Object.hasOwn(clinics, clinic.trim()) && (day === 0 || (day === 6 && clinics[clinic.trim()][1] === 0))) {
+      return message("clinicClosed", { clinic: clinic.trim() });
+    }
     return null;
   }
 
@@ -157,7 +161,7 @@ export const enquiryValidation = (() => {
       phone: validatePhone(value("phone")),
       preferred_language: validateSelection(value("preferred_language"), ["English", "Spanish"], message("preferred_language")),
       preferred_clinic: validateSelection(value("preferred_clinic"), Object.keys(clinics), message("preferred_clinic")),
-      preferred_date: validatePreferredDate(value("preferred_date"), today),
+      preferred_date: validatePreferredDate(value("preferred_date"), today, value("preferred_clinic")),
       preferred_time: validatePreferredTime(value("preferred_time"), value("preferred_clinic"), value("preferred_date"), today),
       service_type: validateServiceType(value("service_type"), value("date_of_birth"), today),
       new_patient: validateSelection(value("new_patient"), ["Yes", "No"], message("new_patient")),

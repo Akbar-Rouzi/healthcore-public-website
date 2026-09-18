@@ -1,6 +1,7 @@
 // Group translations by page or shared component. Put reusable wording in common.
 export const translationDictionary = {
     "en": {
+        "skipToContent": "Skip to main content",
         "home": {
             "hero.badge": "Outpatient clinical excellence",
             "hero.title": "Healthcare that fits your life",
@@ -264,6 +265,7 @@ export const translationDictionary = {
                 "preferred_language": "Select your preferred language",
                 "preferred_clinic": "Select the clinic you would like to visit",
                 "preferred_date": "Select a date at least 1 business day from today and no more than 60 days ahead",
+                "clinicClosed": "{clinic} is closed on the selected date. Please choose another date or clinic.",
                 "preferred_time": "Select your preferred time of day",
                 "service_type": "Select the type of care you are looking for",
                 "paediatric": "Paediatric Care is available for patients under 18. Please check the date of birth or select a different service.",
@@ -286,6 +288,7 @@ export const translationDictionary = {
         }
     },
     "es": {
+        "skipToContent": "Saltar al contenido principal",
         "home": {
             "hero.badge": "Excelencia clínica ambulatoria",
             "hero.title": "Atención médica que se adapta a tu vida",
@@ -549,6 +552,7 @@ export const translationDictionary = {
                 "preferred_language": "Selecciona tu idioma preferido",
                 "preferred_clinic": "Selecciona la clínica que deseas visitar",
                 "preferred_date": "Selecciona una fecha a partir del siguiente día hábil y dentro de los próximos 60 días",
+                "clinicClosed": "{clinic} está cerrada en la fecha seleccionada. Elige otra fecha o clínica.",
                 "preferred_time": "Selecciona tu franja horaria preferida",
                 "service_type": "Selecciona el tipo de atención que buscas",
                 "paediatric": "La atención pediátrica está disponible para menores de 18 años. Revisa la fecha de nacimiento o selecciona otro servicio.",
