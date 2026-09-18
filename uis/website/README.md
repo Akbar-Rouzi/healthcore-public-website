@@ -69,6 +69,8 @@ website/
 │       ├── application.js
 │       └── validation.js
 └── public/
+    ├── chrome-devtools-lighthouse/
+    │   └── lighhouse.PNG
     ├── images/
     │   ├── home-hero.jpg
     │   ├── preventive-care.jpg
@@ -78,6 +80,14 @@ website/
     │   ├── specialist-care.jpg
     │   └── specialist-care-tablet.jpg
     └── ui-ux/
+        ├── application/
+        │   ├── application_desktop.png
+        │   ├── application_mobile.png
+        │   └── application_tablet.png
+        ├── contact/
+        │   ├── contact_desktop.png
+        │   ├── contact_mobile.png
+        │   └── contact_tablet.png
         ├── home/
         │   ├── home_desktop.PNG
         │   ├── home_mobile.PNG
