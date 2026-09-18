@@ -60,7 +60,6 @@ website/
 │   ├── header.html
 │   └── footer.html
 ├── css/
-│   ├── home.css
 │   └── page-loading.css
 ├── js/
 │   ├── components.js
@@ -188,7 +187,7 @@ The screenshots in [`public/ui-ux/home`](./public/ui-ux/home/) are the visual re
 - The hero image follows the text and actions, with the accreditation panel overlapping its lower edge.
 - Service and Why HealthCore cards stack into single columns below 640px.
 
-Home-specific layout rules are in `css/home.css`. New Home wording is in the English/Spanish translation dictionary; service titles and bullet points reuse the Services translations. The existing hero photograph and shared header/footer are retained.
+Home layout and responsive styling use Tailwind utility classes directly in `index.html`. Custom CSS is reserved for the loading, error, and JavaScript-disabled screens, which must remain usable before the Tailwind CDN initializes or when scripts fail. New Home wording is in the English/Spanish translation dictionary; service titles and bullet points reuse the Services translations. The existing hero photograph and shared header/footer are retained.
 
 The shared header height and logo sizing follow the updated Home references. Home browser checks passed at 1600, 1280, 960, 768, 640, 487, 390, and 320px in English and Spanish without horizontal overflow. Desktop, tablet, and mobile screenshots were reviewed; the enquiry link preserves the selected language. Shared header and mobile menu checks also passed on the other four pages at 1280, 768, 390, and 320px.
 
