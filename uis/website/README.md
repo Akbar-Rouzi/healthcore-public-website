@@ -132,6 +132,29 @@ python -m http.server 8000 --directory uis/website
 
 Then open `http://localhost:8000`.
 
+## Lighthouse results
+
+The saved Chrome DevTools Lighthouse screenshot shows the home page audited at `http://localhost:3000/`.
+
+| Category | Score |
+| --- | --- |
+| Performance | 91 / 100 |
+| Accessibility | 96 / 100 |
+| Best Practices | 100 / 100 |
+| SEO | 100 / 100 |
+
+| Performance metric | Recorded value |
+| --- | --- |
+| First Contentful Paint | 0.8 s |
+| Largest Contentful Paint | 1.9 s |
+| Total Blocking Time | 30 ms |
+| Cumulative Layout Shift | 0.011 |
+| Speed Index | 0.9 s |
+
+![Chrome DevTools Lighthouse home page results: Performance 91, Accessibility 96, Best Practices 100, and SEO 100](./public/chrome-devtools-lighthouse/lighhouse.PNG)
+
+These results describe the captured local home page run. The screenshot does not show the audit date, device configuration, or throttling settings; scores can vary between runs. It also does not include the detailed findings needed to identify the remaining performance and accessibility issues.
+
 ## HealthCore UI/UX reference
 
 ### Home
