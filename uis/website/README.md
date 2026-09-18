@@ -240,9 +240,9 @@ The screenshots in [`public/ui-ux/locations`](./public/ui-ux/locations/) guide t
 
 - Summary badges move below the introduction, followed by the region filters. The UK notice shown in the mobile reference is omitted from the implementation.
 - Clinic cards stack in one column, with full-width phone and appointment actions on separate rows.
-- The interpreter support panel stacks its description and support number vertically.
+- The interpreter support panel displays its heading and description without a support-number badge.
 
-All Regions restores all six cards; Texas, Florida, and Georgia display three, two, and one respectively. Filters expose their selected state and announce results for screen readers. The support number `(800) HEALTH-CORE` remains display text pending a valid dialable number; appointment links lead to the existing application placeholder with the selected clinic in the URL. The page uses Tailwind utility classes and reuses the shared header and footer without page-specific overrides.
+All Regions restores all six cards; Texas, Florida, and Georgia display three, two, and one respectively. Filters expose their selected state and announce results for screen readers. Appointment links lead to the patient enquiry form with the selected clinic in the URL. The page uses Tailwind utility classes and reuses the shared header and footer without page-specific overrides.
 
 ### Contact
 
