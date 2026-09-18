@@ -1,165 +1,262 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="en" data-translatable-page data-page-state="loading">
 <head>
   <meta charset="UTF-8" />
+    <style>
+      html:not([data-page-state="ready"]) body > :not(#page-status):not(noscript):not(script) { display: none !important; }
+    </style>
+    <link rel="stylesheet" href="./css/page-loading.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <script src="./js/page-loading.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>HealthCore | Outpatient Healthcare Services</title>
+  <title data-i18n="home.meta.title">HealthCore</title>
 
-  <meta name="description"
-    content="HealthCore provides same-day outpatient appointments, extended hours, and bilingual care across 12 clinics in the US and UK." />
+  <meta
+    name="description"
+    data-i18n-content="home.meta.description" content=""
+  />
 
+  <link rel="canonical" href="https://www.healthcore.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" data-i18n-content="home.meta.title" content="" />
+  <meta
+    property="og:description"
+    data-i18n-content="home.meta.description" content=""
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.healthcore.com/" />
+  <meta
+    property="og:image"
+    content="https://www.healthcore.com/public/images/home-hero.jpg"
+  />
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./js/tailwind-config.js"></script>
+
+  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <!---JSON-LD is structured information for search engines-->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- JSON-LD structured data for search engines -->
   <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "MedicalOrganization",
-        "name": "HealthCore",
-        "description": "Outpatient healthcare services across the US and UK.",
-        "email": "info@healthcore.com",
-        "url": "https://www.healthcore.com"
-      }
-    </script>
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MedicalOrganization",
+          "name": "HealthCore",
+          "description": "Outpatient healthcare network offering primary care, specialist consultations, chronic disease management, and preventive health programmes.",
+          "url": "https://www.healthcore.com",
+          "foundingDate": "2011",
+          "logo": "https://www.healthcore.com/logo.png",
+          "availableLanguage": [
+            "English",
+            "Spanish"
+          ],
+          "areaServed": [
+            "US",
+            "GB"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "Texas",
+            "addressCountry": "US"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-512-340-8800",
+            "contactType": "patient services",
+            "availableLanguage": [
+              "English",
+              "Spanish"
+            ]
+          },
+          "sameAs": [
+            "https://linkedin.com/company/healthcore",
+            "https://facebook.com/healthcore",
+            "https://instagram.com/healthcore"
+          ],
+          "@id": "https://www.healthcore.com/#organization"
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-austin-central",
+          "name": "HealthCore Austin Central",
+          "telephone": "+1-512-340-8800",
+          "openingHours": [
+            "Mo-Fr 07:00-20:00",
+            "Sa 09:00-15:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-austin-north",
+          "name": "HealthCore Austin North",
+          "telephone": "+1-512-340-8810",
+          "openingHours": [
+            "Mo-Fr 08:00-19:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-san-antonio",
+          "name": "HealthCore San Antonio",
+          "telephone": "+1-210-720-4400",
+          "openingHours": [
+            "Mo-Fr 08:00-18:00",
+            "Sa 09:00-13:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-miami",
+          "name": "HealthCore Miami",
+          "telephone": "+1-305-510-7700",
+          "openingHours": [
+            "Mo-Fr 07:00-20:00",
+            "Sa 09:00-16:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-orlando",
+          "name": "HealthCore Orlando",
+          "telephone": "+1-407-892-6600",
+          "openingHours": [
+            "Mo-Fr 08:00-18:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://www.healthcore.com/#clinic-atlanta",
+          "name": "HealthCore Atlanta",
+          "telephone": "+1-404-330-9900",
+          "openingHours": [
+            "Mo-Fr 08:00-19:00"
+          ],
+          "parentOrganization": {
+            "@id": "https://www.healthcore.com/#organization"
+          }
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body class="bg-white font-sans text-slate-700">
+    <div id="page-status" role="status" aria-live="polite" aria-atomic="true">
+      <p id="page-status-message"><span lang="en">Loading ...</span><span lang="es">Cargando...</span></p>
+      <a id="page-retry" href="" hidden><span lang="en">Retry</span><span lang="es">Reintentar</span></a>
+    </div>
+    <noscript>
+      <style>#page-status { display: none; }</style>
+      <div class="page-noscript"><span lang="en">Please enable JavaScript to view this page.</span><span lang="es">Activa JavaScript para ver esta p&aacute;gina.</span></div>
+    </noscript>
   <!-- Header -->
   <div id="header" class="sticky top-0 z-50"></div>
-  <main>
-    <!-- Hero -->
-    <section class="bg-gradient-to-br from-cloud via-white to-cyan-50">
-      <div class="mx-auto grid min-h-[620px] max-w-7xl items-center gap-12 px-5 py-14 md:px-8 lg:grid-cols-2 lg:py-20">
-        <div>
-          <p
-            class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-navy shadow-sm">
-            <span class="size-2 rounded-full bg-mint"></span>
-            Outpatient clinical excellence
-          </p>
 
-          <h1 class="max-w-xl text-4xl font-extrabold leading-tight text-navy sm:text-5xl">
-            Healthcare that fits your life
-          </h1>
-
-          <p class="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
-            12 outpatient clinics across the US and UK offering same-day appointments,
-            extended hours, and bilingual care — so you can get the attention you need,
-            when you need it.
-          </p>
-
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="application.html"
-              class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-navy px-6 py-3 font-bold text-white shadow-lg transition hover:bg-slate-800">
-              Request an appointment
-              <i data-lucide="arrow-right" class="size-5" aria-hidden="true"></i>
-            </a>
-
-            <a href="locations.html"
-              class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-slate-200 bg-white px-6 py-3 font-bold text-navy transition hover:border-teal">
-              <i data-lucide="map-pin" class="size-5 text-teal" aria-hidden="true"></i>
-              Explore 12 locations
-            </a>
-          </div>
+  <main class="home-page">
+    <section class="home-hero home-container" aria-labelledby="hero-heading">
+      <div class="home-hero-copy">
+        <p class="home-badge"><span aria-hidden="true"></span><span data-i18n="home.hero.badge"></span></p>
+        <h1 id="hero-heading"><span data-i18n="home.hero.title"></span></h1>
+        <p class="home-hero-description"><span data-i18n="home.hero.description"></span></p>
+        <div class="home-actions">
+          <a href="application.html" class="home-button home-button-primary"><span data-i18n="common.requestAppointment"></span><i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          <a href="locations.html" class="home-button home-button-secondary"><span data-i18n="home.hero.locations"></span><i data-lucide="map-pin" aria-hidden="true"></i></a>
         </div>
-
-        <div class="relative overflow-hidden rounded-lg shadow-xl">
-          <img src="public/images/home-hero.jpg" alt="HealthCore doctor speaking with an older patient in a clinic"
-            class="aspect-[4/3] w-full object-cover" />
-
-          <!-- Accreditation panel -->
-          <article
-            class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 rounded-lg bg-white p-3 shadow-lg sm:bottom-4 sm:left-4 sm:right-4 sm:p-4">
-            <div class="flex min-w-0 items-center gap-3">
-              <span class="grid size-10 shrink-0 place-items-center rounded-full bg-navy text-white sm:size-12">
-                <i data-lucide="badge-check" class="size-5 sm:size-6" aria-hidden="true"></i>
-              </span>
-
-              <div class="min-w-0">
-                <h2 class="text-xs font-bold text-navy sm:text-base">
-                  Patient-Centered Accreditation
-                </h2>
-
-                <p class="mt-1 text-[10px] text-slate-500 sm:text-sm">
-                  98.4% satisfaction score across 12 clinics
-                </p>
-              </div>
-            </div>
-
-            <div class="hidden shrink-0 items-center gap-1 text-teal sm:flex" aria-label="Five-star patient rating">
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
-              <i data-lucide="star" class="size-4 fill-current" aria-hidden="true"></i>
-            </div>
-          </article>
-        </div>
+      </div>
+      <div class="home-hero-media">
+        <img src="public/images/home-hero.jpg" data-i18n-alt="home.hero.imageAlt" alt="" width="1200" height="896" fetchpriority="high" />
+        <article class="home-accreditation">
+          <div class="home-accreditation-icon"><i data-lucide="shield-check" aria-hidden="true"></i></div>
+          <div class="home-accreditation-copy"><h2><span data-i18n="home.accreditation.title"></span></h2><p><span data-i18n="home.accreditation.description"></span></p></div>
+          <div class="home-rating" role="img" data-i18n-aria-label="home.accreditation.rating"><i data-lucide="star" aria-hidden="true"></i><i data-lucide="star" aria-hidden="true"></i><i data-lucide="star" aria-hidden="true"></i><i data-lucide="star" aria-hidden="true"></i><i data-lucide="star" aria-hidden="true"></i></div>
+        </article>
       </div>
     </section>
 
-    <!-- Benefits -->
-    <section class="py-20" aria-labelledby="benefits-heading">
-      <div class="mx-auto max-w-7xl px-5 md:px-8">
-        <div class="max-w-2xl">
-          <p class="font-bold uppercase text-teal">Care built around you</p>
-          <h2 id="benefits-heading" class="mt-3 text-3xl font-extrabold text-navy">
-            Quality care without unnecessary delays
-          </h2>
-        </div>
-
-        <div class="mt-10 grid gap-6 md:grid-cols-3">
-          <article class="border-t-4 border-teal bg-cloud p-7">
-            <i data-lucide="clock-3" class="size-9 text-teal" aria-hidden="true"></i>
-            <h3 class="mt-5 text-xl font-bold text-navy">Same-Day Care</h3>
-            <p class="mt-3 leading-7">
-              Access urgent outpatient appointments without waiting weeks for care.
-            </p>
-          </article>
-
-          <article class="border-t-4 border-mint bg-cloud p-7">
-            <i data-lucide="moon" class="size-9 text-teal" aria-hidden="true"></i>
-            <h3 class="mt-5 text-xl font-bold text-navy">Extended Hours</h3>
-            <p class="mt-3 leading-7">
-              Morning and evening appointments that work around your schedule.
-            </p>
-          </article>
-
-          <article class="border-t-4 border-navy bg-cloud p-7">
-            <i data-lucide="languages" class="size-9 text-teal" aria-hidden="true"></i>
-            <h3 class="mt-5 text-xl font-bold text-navy">Bilingual Care</h3>
-            <p class="mt-3 leading-7">
-              Clear, welcoming healthcare services available in English and Spanish.
-            </p>
-          </article>
-        </div>
+    <section class="home-services home-container" aria-labelledby="services-heading">
+      <p class="home-eyebrow"><span data-i18n="home.services.label"></span></p>
+      <h2 id="services-heading" class="home-section-title"><span data-i18n="home.services.title"></span></h2>
+      <div class="home-services-grid">
+        <article class="home-service-card">
+          <div class="home-service-icon"><i data-lucide="clock-3" aria-hidden="true"></i></div>
+          <h3><span data-i18n="services.primary.title"></span></h3>
+          <ul><li><span data-i18n="services.primary.appointments"></span></li><li><span data-i18n="services.primary.conditions"></span></li></ul>
+          <p class="home-service-category"><span data-i18n="home.services.primary.category"></span></p>
+        </article>
+<article class="home-service-card">
+          <div class="home-service-icon"><i data-lucide="flask-conical" aria-hidden="true"></i></div>
+          <h3><span data-i18n="services.specialist.title"></span></h3>
+          <ul><li><span data-i18n="services.specialist.specialties"></span></li><li><span data-i18n="services.specialist.referrals"></span></li></ul>
+          <p class="home-service-category"><span data-i18n="home.services.specialist.category"></span></p>
+        </article>
+<article class="home-service-card">
+          <div class="home-service-icon"><i data-lucide="shield-check" aria-hidden="true"></i></div>
+          <h3><span data-i18n="services.preventive.title"></span></h3>
+          <ul><li><span data-i18n="services.preventive.screenings"></span></li><li><span data-i18n="services.preventive.mentalHealth"></span></li></ul>
+          <p class="home-service-category"><span data-i18n="home.services.preventive.category"></span></p>
+        </article>
       </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section class="bg-navy py-16 text-white" aria-labelledby="contact-heading">
-      <div class="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-5 md:px-8 lg:flex-row lg:items-center">
-        <div>
-          <h2 id="contact-heading" class="text-3xl font-extrabold">
-            Ready to speak with our care team?
-          </h2>
-          <p class="mt-3 max-w-2xl text-slate-200">
-            Request an appointment or contact HealthCore for help choosing a clinic.
-          </p>
-        </div>
+    <section class="home-why home-container" aria-labelledby="benefits-heading">
+      <p class="home-eyebrow"><span data-i18n="home.benefits.label"></span></p>
+      <h2 id="benefits-heading" class="home-section-title"><span data-i18n="home.benefits.title"></span></h2>
+      <div class="home-benefits-grid">
+        <article class="home-benefit-card">
+          <div class="home-benefit-icon"><i data-lucide="clock-3" aria-hidden="true"></i></div>
+          <div><h3><span data-i18n="home.benefits.sameDay.title"></span></h3><p><span data-i18n="home.benefits.sameDay.description"></span></p></div>
+        </article>
+<article class="home-benefit-card">
+          <div class="home-benefit-icon"><i data-lucide="calendar-days" aria-hidden="true"></i></div>
+          <div><h3><span data-i18n="home.benefits.hours.title"></span></h3><p><span data-i18n="home.benefits.hours.description"></span></p></div>
+        </article>
+<article class="home-benefit-card">
+          <div class="home-benefit-icon"><i data-lucide="languages" aria-hidden="true"></i></div>
+          <div><h3><span data-i18n="home.benefits.bilingual.title"></span></h3><p><span data-i18n="home.benefits.bilingual.description"></span></p></div>
+        </article>
+<article class="home-benefit-card">
+          <div class="home-benefit-icon"><i data-lucide="globe-2" aria-hidden="true"></i></div>
+          <div><h3><span data-i18n="home.benefits.locations.title"></span></h3><p><span data-i18n="home.benefits.locations.description"></span></p></div>
+        </article>
+      </div>
+    </section>
 
-        <a href="application.html"
-          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-white px-6 py-3 font-bold text-navy">
-          Request an appointment
-          <i data-lucide="calendar-plus" class="size-5" aria-hidden="true"></i>
-        </a>
+    <section class="home-contact" aria-labelledby="contact-heading">
+      <div class="home-container home-contact-layout">
+        <div><h2 id="contact-heading"><span data-i18n="home.contact.title"></span></h2><p><span data-i18n="home.contact.description"></span></p></div>
+        <div class="home-actions">
+          <a href="locations.html" class="home-button home-button-outline"><span data-i18n="home.hero.locations"></span><i data-lucide="map-pin" aria-hidden="true"></i></a>
+          <a href="application.html" class="home-button home-button-light"><span data-i18n="home.contact.submit"></span><i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
       </div>
     </section>
   </main>
@@ -167,7 +264,6 @@
   <!-- Footer -->
   <div id="footer"></div>
 
-  <script src="./js/components.js"></script>
+  <script type="module" src="./js/components.js"></script>
 </body>
-
 </html>

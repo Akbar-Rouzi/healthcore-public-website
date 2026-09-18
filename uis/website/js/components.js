@@ -4,6 +4,9 @@
  * Initializes the dynamically loaded hamburger menu.
  * Highlights the current page in desktop and mobile navigation.
  */
+import { initializeSharedLanguage, updateHeaderMenuLabel } from "./language/language.js";
+
+// Load an HTML file and insert it into the page, such as the header or footer.
 async function loadComponent(selector, filePath) {
     const container = document.querySelector(selector);
 
@@ -22,6 +25,7 @@ async function loadComponent(selector, filePath) {
     container.innerHTML = await response.text();
 }
 
+// Set up opening and closing the mobile menu, including closing it with Escape.
 function initializeMobileMenu() {
     const menuButton = document.getElementById("menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -34,10 +38,7 @@ function initializeMobileMenu() {
         const isOpen = menuButton.getAttribute("aria-expanded") === "true";
 
         menuButton.setAttribute("aria-expanded", String(!isOpen));
-        menuButton.setAttribute(
-            "aria-label",
-            isOpen ? "Open navigation menu" : "Close navigation menu",
-        );
+        updateHeaderMenuLabel();
 
         mobileMenu.classList.toggle("hidden", isOpen);
     });
@@ -52,12 +53,14 @@ function initializeMobileMenu() {
     });
 }
 
+// Convert a path such as /services.html to services so page paths are easy to compare.
 function normalizePagePath(path) {
     const page = path.split("/").pop() || "index";
 
     return page.replace(".html", "");
 }
 
+// Highlight the navigation link for the page the user is viewing.
 function highlightCurrentPage() {
     const currentPage = normalizePagePath(window.location.pathname);
     const navigationLinks = document.querySelectorAll("[data-nav-link]");
@@ -89,6 +92,7 @@ function highlightCurrentPage() {
     });
 }
 
+// Load the header and footer, then set up language switching, the menu, navigation, and icons.
 async function initializeComponents() {
     try {
         await Promise.all([
@@ -96,14 +100,24 @@ async function initializeComponents() {
             loadComponent("#footer", "./components/footer.html"),
         ]);
 
+        if (document.getElementById("patient-enquiry")) {
+            await import("./application/application.js");
+        }
+        if (document.getElementById("clinic-status")) {
+            await import("./locations.js");
+        }
+
+        initializeSharedLanguage();
         initializeMobileMenu();
         highlightCurrentPage();
 
         if (window.lucide) {
             lucide.createIcons();
         }
+        document.dispatchEvent(new Event("pageready"));
     } catch (error) {
         console.error("Unable to initialize shared components:", error);
+        document.dispatchEvent(new Event("pageerror"));
     }
 }
 

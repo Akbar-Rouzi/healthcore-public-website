@@ -1,11 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-translatable-page data-page-state="loading">
 
 <head>
   <meta charset="UTF-8" />
+    <style>
+      html:not([data-page-state="ready"]) body > :not(#page-status):not(noscript):not(script) { display: none !important; }
+    </style>
+    <link rel="stylesheet" href="./css/page-loading.css" />
+    <script src="./js/page-loading.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Services | HealthCore</title>
+  <title data-i18n="services.meta.title">HealthCore</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./js/tailwind-config.js"></script>
@@ -19,6 +24,14 @@
 </head>
 
 <body class="flex min-h-screen flex-col bg-white font-sans text-slate-700">
+    <div id="page-status" role="status" aria-live="polite" aria-atomic="true">
+      <p id="page-status-message"><span lang="en">Loading ...</span><span lang="es">Cargando...</span></p>
+      <a id="page-retry" href="" hidden><span lang="en">Retry</span><span lang="es">Reintentar</span></a>
+    </div>
+    <noscript>
+      <style>#page-status { display: none; }</style>
+      <div class="page-noscript"><span lang="en">Please enable JavaScript to view this page.</span><span lang="es">Activa JavaScript para ver esta p&aacute;gina.</span></div>
+    </noscript>
   <!-- Shared header -->
   <div id="header" class="sticky top-0 z-50"></div>
   <main class="flex-1 bg-[#f7f8fd]">
@@ -27,17 +40,15 @@
       <p
         class="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-xs font-bold uppercase text-teal">
         <i data-lucide="badge-check" class="size-4" aria-hidden="true"></i>
-        Comprehensive outpatient care
+        <span data-i18n="services.intro.badge"></span>
       </p>
 
       <h1 class="mt-5 max-w-3xl text-4xl font-extrabold leading-tight text-navy md:text-5xl">
-        Clinical Services &amp; Excellence
+        <span data-i18n="services.intro.title"></span>
       </h1>
 
       <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-        Delivering synchronized diagnostic, consultative, and preventive
-        healthcare designed for patient autonomy and sustained clinical
-        outcomes.
+        <span data-i18n="services.intro.description"></span>
       </p>
     </section>
 
@@ -46,11 +57,11 @@
     <section class="mx-auto max-w-7xl px-5 pb-24 md:px-8 md:pb-28" aria-labelledby="services-heading">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase text-teal">
-          Section 01 // Clinical departments
+          <span data-i18n="services.departments.label"></span>
         </p>
 
         <h2 id="services-heading" class="mt-3 text-3xl font-extrabold text-navy md:text-4xl">
-          Specialized Medical Practices
+          <span data-i18n="services.departments.title"></span>
         </h2>
       </div>
 
@@ -63,12 +74,12 @@
               <source media="(min-width: 768px) and (max-width: 1023.98px)"
                 srcset="public/images/primary-care-tablet.jpg" />
               <img src="public/images/primary-care.jpg"
-                alt="Primary care physician consulting with a patient in a HealthCore clinic" width="329" height="140"
+                data-i18n-alt="services.primary.imageAlt" alt="" width="329" height="140"
                 class="absolute inset-0 h-full w-full object-cover object-center lg:static lg:aspect-[16/7]" />
             </picture>
             <p
               class="absolute bottom-4 left-4 rounded bg-white px-4 py-2 text-[10px] font-extrabold uppercase text-navy shadow-sm">
-              01 / Outpatient core
+              <span data-i18n="services.primary.label"></span>
             </p>
           </div>
 
@@ -79,22 +90,21 @@
               </span>
 
               <h3 class="mt-5 text-2xl font-bold text-navy md:text-xl min-[900px]:text-2xl">
-                Primary Care &amp; Chronic Disease
+                <span data-i18n="services.primary.title"></span>
               </h3>
               <p class="mt-4 leading-7 text-slate-600">
-                Holistic, continuous clinical oversight designed to maintain systemic stability, prevent hospital
-                re-admissions, and empower proactive self-management.
+                <span data-i18n="services.primary.description"></span>
               </p>
             </div>
 
             <ul class="space-y-4 bg-cloud p-7 md:p-5 lg:p-7">
               <li class="flex gap-3">
                 <i data-lucide="circle-check" class="mt-1 size-5 shrink-0 text-teal" aria-hidden="true"></i>
-                <span>Same-day appointments with primary care physicians</span>
+                <span><span data-i18n="services.primary.appointments"></span></span>
               </li>
               <li class="flex gap-3">
                 <i data-lucide="circle-check" class="mt-1 size-5 shrink-0 text-teal" aria-hidden="true"></i>
-                <span>Ongoing management of diabetes, hypertension, and asthma</span>
+                <span><span data-i18n="services.primary.conditions"></span></span>
               </li>
             </ul>
           </div>
@@ -108,12 +118,12 @@
               <source media="(min-width: 768px) and (max-width: 1023.98px)"
                 srcset="public/images/specialist-care-tablet.jpg" />
               <img src="public/images/specialist-care.jpg"
-                alt="Specialist physician reviewing diagnostic imaging at a workstation" width="330" height="140"
+                data-i18n-alt="services.specialist.imageAlt" alt="" width="330" height="140"
                 class="absolute inset-0 h-full w-full object-cover object-center lg:static lg:aspect-[16/7]" />
             </picture>
             <p
               class="absolute bottom-4 left-4 rounded bg-white px-4 py-2 text-[10px] font-extrabold uppercase text-navy shadow-sm">
-              02 / Specialist care
+              <span data-i18n="services.specialist.label"></span>
             </p>
           </div>
 
@@ -124,22 +134,21 @@
               </span>
 
               <h3 class="mt-5 text-2xl font-bold text-navy md:text-xl min-[900px]:text-2xl">
-                Specialist Consultations
+                <span data-i18n="services.specialist.title"></span>
               </h3>
               <p class="mt-4 leading-7 text-slate-600">
-                Targeted clinical consultations bridging multi-disciplinary fields with prompt, inter-facility
-                communication and unified medical records.
+                <span data-i18n="services.specialist.description"></span>
               </p>
             </div>
 
             <ul class="space-y-4 bg-cloud p-7 md:p-5 lg:p-7">
               <li class="flex gap-3">
                 <i data-lucide="circle-check" class="mt-1 size-5 shrink-0 text-teal" aria-hidden="true"></i>
-                <span>Cardiology, endocrinology, pulmonology, and women's health</span>
+                <span><span data-i18n="services.specialist.specialties"></span></span>
               </li>
               <li class="flex gap-3">
                 <i data-lucide="circle-check" class="mt-1 size-5 shrink-0 text-teal" aria-hidden="true"></i>
-                <span>Referrals coordinated within the HealthCore network</span>
+                <span><span data-i18n="services.specialist.referrals"></span></span>
               </li>
             </ul>
           </div>
@@ -153,12 +162,12 @@
               <source media="(min-width: 768px) and (max-width: 1023.98px)"
                 srcset="public/images/preventive-care-tablet.jpg" />
               <img src="public/images/preventive-care.jpg"
-                alt="HealthCore clinician discussing preventive care with a patient" width="329" height="140"
+                data-i18n-alt="services.preventive.imageAlt" alt="" width="329" height="140"
                 class="absolute inset-0 h-full w-full object-cover object-center lg:static lg:aspect-[16/7]" />
             </picture>
             <p
               class="absolute bottom-4 left-4 rounded bg-white px-4 py-2 text-[10px] font-extrabold uppercase text-navy shadow-sm">
-              03 / Prevention
+              <span data-i18n="services.preventive.label"></span>
             </p>
           </div>
 
@@ -169,22 +178,21 @@
               </span>
 
               <h3 class="mt-5 text-2xl font-bold text-navy md:text-xl min-[900px]:text-2xl">
-                Preventive Health &amp; Wellbeing
+                <span data-i18n="services.preventive.title"></span>
               </h3>
               <p class="mt-4 leading-7 text-slate-600">
-                Comprehensive proactive protocols focusing on early biomarker identification, routine protection, and
-                integrated mental health support.
+                <span data-i18n="services.preventive.description"></span>
               </p>
             </div>
 
             <ul class="space-y-4 bg-cloud p-7 md:p-5 lg:p-7">
               <li class="flex gap-3">
                 <i data-lucide="circle-check" class="mt-1 size-5 shrink-0 text-teal" aria-hidden="true"></i>
-                <span>Screenings, vaccinations, and annual check-ups</span>
+                <span><span data-i18n="services.preventive.screenings"></span></span>
               </li>
               <li class="flex gap-3">
                 <i data-lucide="circle-check" class="mt-1 size-5 shrink-0 text-teal" aria-hidden="true"></i>
-                <span>Mental health counselling and psychiatry referrals</span>
+                <span><span data-i18n="services.preventive.mentalHealth"></span></span>
               </li>
             </ul>
           </div>
@@ -200,18 +208,15 @@
           <!-- Introduction -->
           <div>
             <p class="text-xs font-bold uppercase tracking-widest text-teal">
-              Section 02 // Institutional credibility
+              <span data-i18n="services.why.label"></span>
             </p>
 
             <h2 id="why-healthcore-heading" class="mt-4 text-3xl font-extrabold text-navy md:text-4xl">
-              Why HealthCore
+              <span data-i18n="services.why.title"></span>
             </h2>
 
             <p class="mt-6 leading-8 text-slate-600">
-              We have re-engineered ambulatory outpatient medicine around
-              human reality: removing scheduling bottlenecks, guaranteeing
-              clear communication, and anchoring care across multi-national
-              standards.
+              <span data-i18n="services.why.description"></span>
             </p>
 
             <!-- Care continuity metric -->
@@ -224,16 +229,16 @@
                 </svg>
 
                 <span class="absolute inset-0 grid place-items-center text-lg font-extrabold text-navy">
-                  94%
+                  <span data-i18n="services.continuity.value"></span>
                 </span>
               </div>
 
               <div class="min-w-0">
                 <h3 class="text-sm font-extrabold text-navy">
-                  Care Continuity Index
+                  <span data-i18n="services.continuity.title"></span>
                 </h3>
                 <p class="mt-1 text-xs leading-5 text-slate-600">
-                  Patient retention and coordinated follow-up compliance
+                  <span data-i18n="services.continuity.description"></span>
                 </p>
               </div>
             </div>
@@ -247,10 +252,10 @@
               </span>
 
               <p class="mt-6 text-[10px] font-bold uppercase tracking-wide text-teal lg:mt-auto lg:pt-5">
-                01 / Rapid access
+                <span data-i18n="services.benefits.access.label"></span>
               </p>
               <h3 class="mt-2 text-base font-extrabold leading-6 text-navy">
-                Same-day appointments at most locations
+                <span data-i18n="services.benefits.access.title"></span>
               </h3>
             </article>
 
@@ -260,10 +265,10 @@
               </span>
 
               <p class="mt-6 text-[10px] font-bold uppercase tracking-wide text-teal lg:mt-auto lg:pt-5">
-                02 / Patient scheduling
+                <span data-i18n="services.benefits.hours.label"></span>
               </p>
               <h3 class="mt-2 text-base font-extrabold leading-6 text-navy">
-                Extended hours — weekdays until 7pm or 8pm, Saturdays available
+                <span data-i18n="services.benefits.hours.title"></span>
               </h3>
             </article>
 
@@ -273,10 +278,10 @@
               </span>
 
               <p class="mt-6 text-[10px] font-bold uppercase tracking-wide text-teal lg:mt-auto lg:pt-5">
-                03 / Inclusivity
+                <span data-i18n="services.benefits.bilingual.label"></span>
               </p>
               <h3 class="mt-2 text-base font-extrabold leading-6 text-navy">
-                Bilingual staff in English and Spanish at US locations
+                <span data-i18n="services.benefits.bilingual.title"></span>
               </h3>
             </article>
 
@@ -286,10 +291,10 @@
               </span>
 
               <p class="mt-6 text-[10px] font-bold uppercase tracking-wide text-teal lg:mt-auto lg:pt-5">
-                04 / Scaled reach
+                <span data-i18n="services.benefits.locations.label"></span>
               </p>
               <h3 class="mt-2 text-base font-extrabold leading-6 text-navy">
-                12 clinics across Texas, Florida, Georgia, and the United Kingdom
+                <span data-i18n="services.benefits.locations.title"></span>
               </h3>
             </article>
           </div>
@@ -302,7 +307,7 @@
   <div id="footer"></div>
 
   <!-- Shared component behavior -->
-  <script src="./js/components.js"></script>
+  <script type="module" src="./js/components.js"></script>
 </body>
 
 </html>

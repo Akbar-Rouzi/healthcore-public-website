@@ -7,17 +7,18 @@ This folder contains HealthCore's public-facing website for patients and visitor
 The current milestone includes:
 
 - A responsive home page for desktop, tablet, and mobile
+- Home page canonical URL, Open Graph metadata, and Schema.org structured data for HealthCore and its six listed US clinics
 - A shared header and footer loaded into each page with vanilla JavaScript, using the Home UI/UX reference consistently across all four pages
 - A hamburger navigation menu for mobile and tablet
 - Active navigation styling for standard `.html` and clean URLs
-- A hero section with appointment and location calls to action
-- Key outpatient care benefits
+- A hero section with appointment and location calls to action and a floating accreditation panel
+- Three outpatient service cards and a four-card Why HealthCore section
 - A contact call to action and professional footer
 - A responsive Services page with three specialized medical practice cards and a Why HealthCore section
 - A responsive Locations directory with six US clinic cards, region filters, and phone links
 - A responsive Contact page with office contact links, appointment guidance, operating hours, and emergency information
 
-The appointment enquiry form will be implemented in a later milestone. Locations and Contact appointment links currently lead to the application placeholder.
+The patient enquiry form collects contact details, appointment preferences, patient history, and a health concern. Locations and Contact appointment links open this form. Client-side validation and inline error messages are implemented. Backend submission remains reserved for a later milestone.
 
 ## Technology
 
@@ -27,6 +28,22 @@ The appointment enquiry form will be implemented in a later milestone. Locations
 - Vanilla JavaScript for loading shared components, responsive navigation, and active-page styling
 
 No build step is currently required.
+
+## Translation loading
+
+All five pages use English and Spanish translations from `js/language/translation-dictionary.js`. Translated elements and attributes keep their `data-i18n` keys in HTML; their wording is filled by JavaScript. Page titles use `HealthCore` until translation finishes.
+
+The page starts hidden behind a loading message in the saved language, defaulting to English when no supported preference is available. `js/components.js` loads the header, footer, and any page-specific controls, applies the saved language, and then reveals the page. `js/page-loading.js` independently shows an error and a Retry link in the selected language if initialization fails or takes more than 15 seconds. Late successful initialization can still reveal the page. Browsers with JavaScript disabled show a bilingual enable-JavaScript message.
+
+Use the local HTTP server described below; no build command is needed. To change wording, edit the dictionary. Keep the small bilingual loading, retry, and JavaScript-disabled messages independent of the dictionary so they remain available when translation files cannot load. Translated metadata also requires JavaScript; crawlers that do not execute it will see the generic title and empty translated descriptions.
+
+## Home page metadata and accessibility
+
+[`index.html`](./index.html) includes a canonical URL and Open Graph title, description, page type, URL, and image metadata in its `<head>`. A JSON-LD script (`application/ld+json`) describes HealthCore as a Schema.org `MedicalOrganization`, including its founding date, logo, supported languages, service areas, Austin address, patient services contact, and social profiles. The same JSON-LD `@graph` contains six `MedicalClinic` entries with the clinic names, telephone numbers, and opening hours from the context document. Each clinic references HealthCore through `parentOrganization` and the organization's shared `@id`.
+
+Keep these metadata values in sync when organization details or public URLs change. The JSON-LD uses plain URL strings and can be edited directly in `index.html` without a build step.
+
+The home page hero is associated with its heading through `aria-labelledby`, and appointment and location calls to action include visible keyboard focus outlines.
 
 ## Project structure
 
@@ -42,12 +59,15 @@ website/
 │   ├── header.html
 │   └── footer.html
 ├── css/
+│   ├── home.css
+│   └── page-loading.css
 ├── js/
 │   ├── components.js
-│   ├── main.js
 │   ├── locations.js
 │   ├── tailwind-config.js
-│   └── validation.js
+│   └── application/
+│       ├── application.js
+│       └── validation.js
 └── public/
     ├── images/
     │   ├── home-hero.jpg
@@ -75,10 +95,12 @@ website/
 
 - `components/header.html` and `components/footer.html` contain the reusable site layout.
 - `js/components.js` loads the shared components and controls navigation behavior.
+- `js/language/language.js` manages language selection, saved preferences, and translated menu labels.
+- `js/language/translation-dictionary.js` contains the English/Spanish key-value dictionary.
+- `js/language/translation-utils.js` contains the `getTranslationWithFallback()` and `applyTranslations()` helpers.
 - `js/tailwind-config.js` contains the shared Tailwind theme configuration.
-- `js/main.js` is reserved for future page-specific behavior.
 - `js/locations.js` filters clinic cards by region and announces the visible result count.
-- `application.html` and `js/validation.js` are reserved for the future appointment enquiry form.
+- `application.html` contains the patient enquiry form, styled with Tailwind utility classes directly in the HTML. `js/application/application.js` handles conditional fields, inline errors, the live character counter, and clinic preselection. `js/application/validation.js` contains the field rules, calendar calculations, and clinic-hours checks.
 - Locations page styling uses Tailwind utility classes directly in `locations.html`; the shared header and footer are used without page-specific overrides.
 - Contact page styling uses Tailwind utility classes directly in `contact.html`; the shared header and footer are used without page-specific overrides.
 - `public/ui-ux/` contains the responsive UI/UX references for each implemented page.
@@ -119,17 +141,19 @@ The screenshots in [`public/ui-ux/home`](./public/ui-ux/home/) are the visual re
 
 ![HealthCore home page on desktop](./public/ui-ux/home/home_desktop.PNG)
 
-- The top header displays the compact HealthCore logo, centered navigation links and account icon.
-- The hero uses a two-column layout: headline, description, calls to action, and benefits on the left; patient photography and accreditation details on the right.
-- The footer places company information on the left and contact and social links on the right.
+- The shared header displays the compact HealthCore logo, centered navigation links, and EN/ES language controls.
+- The hero uses two columns: headline, description, and calls to action on the left; patient photography and a floating accreditation panel on the right. The panel reads Founded 2011 / Trusted Outpatient Excellence.
+- Three bordered service cards introduce primary care, specialist consultations, and preventive health, followed by four pale blue Why HealthCore cards in two columns.
+- The navy closing panel includes location and patient enquiry links beside the care-team introduction.
+- The shared footer places the brand and email on the left, social links in the middle, and copyright on the right.
 
 #### Tablet
 
 ![HealthCore home page on tablet](./public/ui-ux/home/home_tablet.PNG)
 
 - The hero changes to a single-column layout, with the text and actions above the image.
-- The main navigation moves into a hamburger menu while the logo and account icon remain visible.
-- Benefit items remain in a three-column row beneath the hero image.
+- The main navigation moves into a hamburger menu while the logo and EN/ES controls remain visible.
+- Services remain in three columns from 640px; Why HealthCore uses two columns. The closing panel places its actions beneath the introduction.
 
 #### Mobile
 
@@ -137,7 +161,12 @@ The screenshots in [`public/ui-ux/home`](./public/ui-ux/home/) are the visual re
 
 - Content is stacked vertically for a narrow viewport, with readable spacing and no horizontal scrolling.
 - Both calls to action become full-width controls for easier touch interaction.
-- The hero image follows the text and actions, while the accreditation panel remains overlaid near the bottom of the image.
+- The hero image follows the text and actions, with the accreditation panel overlapping its lower edge.
+- Service and Why HealthCore cards stack into single columns below 640px.
+
+Home-specific layout rules are in `css/home.css`. New Home wording is in the English/Spanish translation dictionary; service titles and bullet points reuse the Services translations. The existing hero photograph and shared header/footer are retained.
+
+The shared header height and logo sizing follow the updated Home references. Home browser checks passed at 1600, 1280, 960, 768, 640, 487, 390, and 320px in English and Spanish without horizontal overflow. Desktop, tablet, and mobile screenshots were reviewed; the enquiry link preserves the selected language. Shared header and mobile menu checks also passed on the other four pages at 1280, 768, 390, and 320px.
 
 #### Mobile and tablet menu
 
@@ -186,7 +215,7 @@ These screenshots describe the target design; they do not establish an exact vis
 
 ### Locations
 
-The screenshots in [`public/ui-ux/locations`](./public/ui-ux/locations/) guide the US clinic directory. A pale blue introduction presents the clinic count and bilingual support, followed by region filters, six clinic cards, and an interpreter support panel. Clinic names, hours, and phone numbers follow the supplied references. Page content is English-only; Spanish labels are omitted and the phone support heading is translated. The shared header includes the EN/ES language control from the Home reference. Translation behavior is not implemented.
+The screenshots in [`public/ui-ux/locations`](./public/ui-ux/locations/) guide the US clinic directory. A pale blue introduction presents the clinic count and bilingual support, followed by region filters, six clinic cards, and an interpreter support panel. Clinic names, hours, and phone numbers follow the supplied references. Page content, clinic hours, action labels, and filter result announcements support English and Spanish. The shared header includes the EN/ES language control from the Home reference.
 
 #### Desktop
 
@@ -211,13 +240,13 @@ The screenshots in [`public/ui-ux/locations`](./public/ui-ux/locations/) guide t
 
 - Summary badges move below the introduction, followed by the region filters. The UK notice shown in the mobile reference is omitted from the implementation.
 - Clinic cards stack in one column, with full-width phone and appointment actions on separate rows.
-- The interpreter support panel stacks its description and support number vertically.
+- The interpreter support panel displays its heading and description without a support-number badge.
 
-All Regions restores all six cards; Texas, Florida, and Georgia display three, two, and one respectively. Filters expose their selected state and announce results for screen readers. The support number `(800) HEALTH-CORE` remains display text pending a valid dialable number; appointment links lead to the existing application placeholder with the selected clinic in the URL. The page uses Tailwind utility classes and reuses the shared header and footer without page-specific overrides.
+All Regions restores all six cards; Texas, Florida, and Georgia display three, two, and one respectively. Filters expose their selected state and announce results for screen readers. Appointment links lead to the patient enquiry form with the selected clinic in the URL. The page uses Tailwind utility classes and reuses the shared header and footer without page-specific overrides.
 
 ### Contact
 
-The screenshots in [`public/ui-ux/contact`](./public/ui-ux/contact/) guide the Contact page. Soft blue background accents frame four white contact cards, a navy appointment panel, operational hours, and a separate emergency information section. Content remains English-only, using the shared header with one mobile menu and the EN/ES language control.
+The screenshots in [`public/ui-ux/contact`](./public/ui-ux/contact/) guide the Contact page. Soft blue background accents frame four white contact cards, a navy appointment panel, operational hours, and a separate emergency information section. Content supports English and Spanish, using the shared header with one mobile menu and the EN/ES language control.
 
 #### Desktop
 
@@ -244,6 +273,27 @@ The screenshots in [`public/ui-ux/contact`](./public/ui-ux/contact/) guide the C
 - The appointment button spans the panel width, and the operational hours follow beneath it.
 - The emergency badge moves below the explanation. The reference centers footer content; the implementation retains the shared footer layout.
 
-Office contact links use `mailto:` and `tel:` destinations. The appointment button opens the existing application placeholder; no form submission or digital triage backend is implemented. Intake and HIPAA-compliance wording reproduces the supplied design and requires confirmation against the eventual service before publication. Time-zone badges reproduce the reference labels rather than indicating live local time.
+Office contact links use `mailto:` and `tel:` destinations. The appointment button opens the patient enquiry form; no form submission or digital triage backend is implemented. Intake and HIPAA-compliance wording reproduces the supplied design and requires confirmation against the eventual service before publication. Time-zone badges reproduce the reference labels rather than indicating live local time.
 
 Chrome checks passed at 1588, 1280, 960, 768, 487, 375, and 320px: contact links, active navigation, mobile menu opening and Escape dismissal, and horizontal overflow. Desktop, tablet, and mobile browser screenshots were also visually reviewed against the references.
+
+## Patient enquiry page
+
+The form in `application.html` follows the [desktop](./public/ui-ux/application/application_desktop.png), [tablet](./public/ui-ux/application/application_tablet.png), and [mobile](./public/ui-ux/application/application_mobile.png) references. It retains the shared header and footer, with four numbered sections and fields arranged in two columns from 640px and one column on smaller screens.
+
+The updated partnerships panel appears above the patient notice from 640px and below the form on mobile, with its contact link grouped with the description. The shared site header and footer remain consistent with the other pages.
+
+The original 16 field names follow the enquiry specification. Returning patients can also enter an optional `patient_id` in the format `HC-A3F291`. Preferred time uses accessible Morning, Afternoon, and Evening radio cards matching the updated reference, arranged in three columns from 640px and stacked on mobile. The field name remains `preferred_time`. Clinic options match the six Locations cards, and incoming `?clinic=` links preselect the corresponding clinic. Selecting insurance Yes reveals provider and member ID fields; otherwise those fields are hidden and disabled. The health concern includes a live character count.
+
+Required fields are marked visually and with accessibility attributes. Inline errors appear as the user types, on blur/change, and after submission, clear as fields are corrected, and are associated with their controls. Submit validates all fields and focuses the first invalid control. Valid details open the simulated HealthCore thank-you modal with focus inside it. The close button or Escape dismisses the modal, clears all form values and validation state, hides conditional fields, resets the character counter, and focuses First name. Editing a field hides the confirmation. Submission is local only; no patient information is sent or stored. The footer is unchanged.
+
+Chrome checks passed at 1280, 1024, 768, 640, 390, 375, and 320px with no horizontal overflow. Desktop, tablet, and mobile screenshots were reviewed. Clinic preselection, insurance field visibility and exclusion from form data, character counting, and mobile navigation opening and Escape dismissal passed, with no JavaScript exceptions.
+### Validation behavior
+
+Names accept 2–50 Unicode letters, including accented letters. Date of birth accepts ages 0–120 inclusive; Paediatric Care requires an age under 18. Phone numbers require a leading `+`, a nonzero country-code prefix, and 7–15 digits, with optional spaces or hyphens. Required dropdowns accept only the specified options.
+
+Preferred dates start at the next Monday–Friday business day and end 60 calendar days from the user's local date. Public holidays are not excluded. Calendar arithmetic avoids daylight-saving shifts. An evening selection at a clinic closing at 6pm or 7pm shows a nonblocking warning; evening selections on dates when the clinic is closed or closes by 5pm are invalid. Clinic hours mirror the Locations page.
+
+Insurance details are required only when Yes is selected (provider: up to 100 characters; member ID: 6–20 alphanumeric characters). Patient ID is optional and validated only for returning patients. Hidden fields are disabled, excluded from form data, and have their errors cleared. Health concern requires 20–500 characters with a live counter and remaining-character error. Contact consent is required.
+
+Browser validation checks passed for exact inline messages, error associations and clearing, first-invalid focus, conditional fields, Paediatric Care dependencies, evening warnings, character limits, consent, and the simulated confirmation. Error layouts were checked at 1280, 1024, 768, 640, 390, 375, and 320px without horizontal overflow or JavaScript exceptions.
